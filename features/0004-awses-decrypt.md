@@ -50,7 +50,8 @@ That is covered by 0003-awses-encrypt.
 ## Motivation
 
 We need a way of describing full AWS Encryption SDK ciphertext message test vectors and how to 
-decrypt them.
+decrypt them. This will be used both for decrypting known good test vectors with an unknown implementation 
+and for decrypting with a known good implementation ciphertexts created by an unknown implementation.
 
 ## Guide-level Explanation
 
@@ -101,26 +102,26 @@ This can be used to determine what criteria were used to generate a given test c
 * `plaintext` : URI that identifies the plaintext
 * `ciphertext` : URI that identifies the ciphertext
 * `master-keys` : List of Master Key descriptions:
-  * `type` : Type of master key
-    * Allowed Values
-      * `aws-kms`
-      * `raw`
-  * `key` : Name of key from `keys` manifest
-  * `key-id` : Master Key ID (optional) (default: `key` name or `key.key-id` for AWS KMS)
-  * `provider-id` : Master Key Provider ID (required for Raw Master Keys)
-  * `encryption-algorithm` : Encryption Algorithm (required for Raw Master Keys)
+   * `type` : Type of master key
      * Allowed Values
-         * `aes`
-         * `rsa`
-  * `padding-algorithm` : Padding Algorithm (required for RSA Raw Master Keys)
-     * Allowed Values
-         * `pkcs1`
-         * `oaep-mgf1`
-  * `padding-hash` : Hash Algorithm used with Padding Algorithm (required if `padding-algorithm` is `oaep-mgf1`)
-     * Allowed Values
-         * `sha1`
-         * `sha256`
-         * `sha512`
+       * `aws-kms`
+       * `raw`
+   * `key` : Name of key from `keys` manifest
+   * `key-id` : Master Key ID (optional) (default: `key` name or `key.key-id` for AWS KMS)
+   * `provider-id` : Master Key Provider ID (required for Raw Master Keys)
+   * `encryption-algorithm` : Encryption Algorithm (required for Raw Master Keys)
+      * Allowed Values
+          * `aes`
+          * `rsa`
+   * `padding-algorithm` : Padding Algorithm (required for RSA Raw Master Keys)
+      * Allowed Values
+          * `pkcs1`
+          * `oaep-mgf1`
+   * `padding-hash` : Hash Algorithm used with Padding Algorithm (required if `padding-algorithm` is `oaep-mgf1`)
+      * Allowed Values
+          * `sha1`
+          * `sha256`
+          * `sha512`
 
 ### Example
 
