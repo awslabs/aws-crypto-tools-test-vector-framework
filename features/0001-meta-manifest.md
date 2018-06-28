@@ -21,11 +21,6 @@ It is helpful to have a single entry point for all test vectors. Every manifest 
 information for a client to use it with no additional information, but the meta-manifest provides 
 a single reference point for all manifests within a given test set.
 
-## Drawbacks
-
-What problems were introduced by this feature, or what gaps in the original problems does
-it leave open?
-
 ## Guide-level Explanation
 
 The meta-manifest is a JSON document that identifies the location and type of one or more test 
@@ -64,15 +59,15 @@ Each reference must contain:
     "tests": [
         {
             "manifest": "file://relative/file/path.json",
-            "type": "decrypt"
+            "type": "example-manifest"
         },
         {
             "manifest": "s3://example/key/path.json",
-            "type": "serialize"
+            "type": "example-manifest"
         },
         {
             "manifest": "https://example.com/manifests/example.json",
-            "type": "deserialize"
+            "type": "example-manifest"
         }
     ]
 }
