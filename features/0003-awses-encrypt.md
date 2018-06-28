@@ -63,6 +63,13 @@ Encryption SDK ciphertext messages along with a corresponding 0004-awses-decrypt
 Each test case includes all necessary instructions to construct ciphertext message. This includes 
 all necessary inputs including algorithm suite, frame size, encryption context, and master key(s).
 
+### Workflow
+
+1. Read encrypt manifest.
+2. Generate plaintexts and write to destination.
+3. Generate all required test vectors for each plaintext, writing ciphertext to destination.
+4. Generate decrypt manifest file and write to destination.
+
 ## Reference-level Explanation
 
 This manifest should be generated using the `0003-awses-encrypt-generate.py` script in this package 

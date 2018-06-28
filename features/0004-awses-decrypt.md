@@ -61,6 +61,12 @@ plaintext. Each test definition includes metadata that defines the master key re
 In addition to describing the test cases, the manifest also identifies the client and version 
 that created the ciphertext.
 
+### Workflow
+
+1. Read decrypt manifest file.
+2. Using data in decrypt manifest, decrypt all test vectors and validate the results against their respective plaintexts.
+
+
 ## Reference-level Explanation
 
 ### Contents
