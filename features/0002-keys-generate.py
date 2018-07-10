@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 #
@@ -38,7 +37,6 @@ AES_KEYS = (
         ),
     ),
 )
-# Store static keys to avoid dependencies to generate them.
 RSA_PRIVATE_KEYS = (
     (
         4096,
