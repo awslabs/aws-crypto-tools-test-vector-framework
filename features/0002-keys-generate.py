@@ -15,13 +15,29 @@
 #
 # Compatible with any version of Python from 2.6 on (2.6 needed for json)
 from __future__ import division
+
 import base64
 import json
 import os
 import sys
 
-
-AES_KEY_SIZES = (128, 192, 256)
+AES_KEYS = (
+    (128, b"\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x10\x11\x12\x13\x14\x15"),
+    (
+        192,
+        (
+            b"\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x10\x11\x12\x13\x14\x15\x16"
+            b"\x17\x18\x19\x20\x21\x22\x23"
+        ),
+    ),
+    (
+        256,
+        (
+            b"\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x10\x11\x12\x13\x14\x15\x16"
+            b"\x17\x18\x19\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x30\x31"
+        ),
+    ),
+)
 # Store static keys to avoid dependencies to generate them.
 RSA_PRIVATE_KEYS = (
     (
@@ -114,13 +130,13 @@ def build_manifest():
     manifest = {"manifest": {"type": "keys", "version": 1}}
     keys = {}
 
-    for key_bits in AES_KEY_SIZES:
+    for key_bits, key_bytes in AES_KEYS:
         keys["aes-%s" % key_bits] = {
             "algorithm": "aes",
             "type": "symmetric",
             "bits": key_bits,
             "encoding": "base64",
-            "material": [base64.b64encode(os.urandom(key_bits // 8))],
+            "material": [key_bytes],
         }
 
     for key_bits, key_type, pem_key in RSA_PRIVATE_KEYS:
