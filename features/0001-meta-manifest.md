@@ -1,12 +1,16 @@
 
-|           |                                               |
-|:----------|:----------------------------------------------|
-|__Feature__|Meta Manifest                                  |
-|__Version__|1                                              |
-|__Created__|2018-06-21                                     |
-|__Updated__|ISO-8601 date feature was most recently updated|
+|           |             |
+|:----------|:------------|
+|__Feature__|Meta Manifest|
+|__Version__|1            |
+|__Created__|2018-06-21   |
+|__Updated__|2018-07-10   |
 
 ## Summary
+
+Test manifests are used within this framework to define how to evaluate or generate certain test 
+vectors. When multiple manifests are present in a single location it is helpful to be able to 
+identify groups of manifests that should be processed together.
 
 The meta-manifest is a file identifying one or more additional manifests, along with indicating 
 the type of each manifest.
