@@ -1,10 +1,10 @@
 
-|           |                                               |
-|:----------|:----------------------------------------------|
-|__Feature__|AWS Encryption SDK Decrypt Message             |
-|__Version__|1                                              |
-|__Created__|2018-06-25                                     |
-|__Updated__|ISO-8601 date feature was most recently updated|
+|           |                                  |
+|:----------|:---------------------------------|
+|__Feature__|AWS Encryption SDK Decrypt Message|
+|__Version__|1                                 |
+|__Created__|2018-06-25                        |
+|__Updated__|2018-07-10                        |
 
 ## Dependencies
 
@@ -44,7 +44,7 @@ ciphertext messages along with sufficient metadata to decrypt them.
 
 ## Out of Scope
 
-These manifests do not include any direct full description of how the test vectors were created. 
+These manifests do not include any description of how the test vectors were created. 
 That is covered by 0003-awses-encrypt.
 
 ## Motivation
