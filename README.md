@@ -12,6 +12,10 @@ These features describe the framework itself as well as the different types of s
 Some manifest definitions include helper scripts to generate a manifest if it is desirable to 
 have a consistent starting point.
 
+The intended purpose of manifests is to describe either how to generate test vectors or how to 
+process existing test vectors. This enables compatible clients' testing frameworks to validate 
+interoperability with other clients in a structured and reproducible way.
+
 * [Framework](./features/0000-framework.md) : The overall AWS Crypto Tools test vector framework.
 * [Meta Manifest](./features/0001-meta-manifest.md) : A manifest for identifying a group of manifests
   that should be processed as a group
