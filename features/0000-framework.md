@@ -1,14 +1,14 @@
 
-|           |                                               |
-|:----------|:----------------------------------------------|
-|__Feature__|Framework                                      |
-|__Version__|1                                              |
-|__Created__|2018-06-21                                     |
-|__Updated__|ISO-8601 date feature was most recently updated|
+|           |          |
+|:----------|:---------|
+|__Feature__|Framework |
+|__Version__|1         |
+|__Created__|2018-06-21|
+|__Updated__|2018-07-10|
 
 ## Summary
 
-The AWS Cryptography test vector framework creates a mechanism for defining static test
+The AWS Crypto Tools test vector framework creates a mechanism for defining static test
 vectors and associated manifests that describe those test vectors.
 
 These test vectors are intended to be used to validate interoperability across implementations
@@ -19,6 +19,13 @@ information for a compatible client to process each test case. These manifest fi
 identify additional resources needed for a given test case. These resources will be identified 
 with a URI. If identifying a local file, the URI will be a relative path from the manifest file's 
 parent directory to the target file.
+
+Some types of test manifests will define specific values or instructions for generating test vectors
+rather than instructions for processing existing test vectors. The definitions for these manifests 
+should include either the desired manifest or a helper tool that will generate one.
+
+Every manifest type definition must include an identifying name that can be used to uniquely 
+identify that manifest type.
 
 ## Out of Scope
 
