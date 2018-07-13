@@ -127,6 +127,7 @@ This can be used to determine what criteria were used to generate a given test c
       * Allowed Values
           * `sha1`
           * `sha256`
+          * `sha384`
           * `sha512`
 
 ### Example
