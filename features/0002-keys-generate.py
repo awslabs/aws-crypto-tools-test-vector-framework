@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License"). You
@@ -12,9 +11,10 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 #
-# Compatible with any version of Python from 2.6 on (2.6 needed for json)
+# Only Python 3.6+ compatibility is guaranteed.
 from __future__ import division
 
+import argparse
 import base64
 import json
 import os
@@ -37,7 +37,7 @@ AES_KEYS = (
         ),
     ),
 )
-RSA_PRIVATE_KEYS = (
+RSA_KEYS = (
     (
         4096,
         "private",
@@ -118,8 +118,13 @@ AWS_KMS_KEYS = (
     (
         "us-west-2-decryptable",
         "arn:aws:kms:us-west-2:658956600833:alias/EncryptDecrypt",
+        True,
     ),
-    ("us-west-2-encrypt-only", "arn:aws:kms:us-west-2:658956600833:alias/EncryptOnly"),
+    (
+        "us-west-2-encrypt-only",
+        "arn:aws:kms:us-west-2:658956600833:alias/EncryptOnly",
+        False,
+    ),
 )
 
 
@@ -130,15 +135,19 @@ def build_manifest():
 
     for key_bits, key_bytes in AES_KEYS:
         keys["aes-%s" % key_bits] = {
+            "encrypt": True,
+            "decrypt": True,
             "algorithm": "aes",
             "type": "symmetric",
             "bits": key_bits,
             "encoding": "base64",
-            "material": [key_bytes],
+            "material": [base64.b64encode(key_bytes).decode("utf-8")],
         }
 
-    for key_bits, key_type, pem_key in RSA_PRIVATE_KEYS:
+    for key_bits, key_type, pem_key in RSA_KEYS:
         keys["rsa-%s-%s" % (key_bits, key_type)] = {
+            "encrypt": True,
+            "decrypt": key_type == "private",
             "algorithm": "rsa",
             "type": key_type,
             "bits": key_bits,
@@ -147,15 +156,35 @@ def build_manifest():
             "material": pem_key.split("\n"),
         }
 
-    for key_name, key_arn in AWS_KMS_KEYS:
-        keys[key_name] = {"type": "aws-kms", "key-id": key_arn}
+    for key_name, key_arn, decryptable in AWS_KMS_KEYS:
+        keys[key_name] = {
+            "type": "aws-kms",
+            "key-id": key_arn,
+            "encrypt": True,
+            "decrypt": decryptable,
+        }
 
     manifest["keys"] = keys
     return manifest
 
 
-if __name__ == "__main__":
+def main(args=None):
+    """Entry point for CLI"""
+    parser = argparse.ArgumentParser(description="Build a keys manifest.")
+    parser.add_argument(
+        "--human", action="store_true", help="Print human-readable JSON"
+    )
+
+    parsed = parser.parse_args(args)
+
+    manifest = build_manifest()
+
     kwargs = {}
-    if sys.argv[-1] == "-h":
+    if parsed.human:
         kwargs["indent"] = 4
-    print(json.dumps(build_manifest(), **kwargs))
+
+    return json.dumps(manifest, **kwargs)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
