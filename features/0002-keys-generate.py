@@ -12,12 +12,9 @@
 # language governing permissions and limitations under the License.
 #
 # Only Python 3.6+ compatibility is guaranteed.
-from __future__ import division
-
 import argparse
 import base64
 import json
-import os
 import sys
 
 AES_KEYS = (

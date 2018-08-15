@@ -12,15 +12,13 @@
 # language governing permissions and limitations under the License.
 #
 # Only Python 3.6+ compatibility is guaranteed.
-from __future__ import print_function
-
 import argparse
 import itertools
 import json
 import os
 import sys
-from urllib.parse import urlunparse
 import uuid
+from urllib.parse import urlunparse
 
 MANIFEST_VERSION = 1
 
@@ -212,8 +210,8 @@ def build_manifest(keys_filename):
     with open(keys_filename, "r") as keys_file:
         keys = json.load(keys_file)
 
-    keys_path = '/'.join(keys_filename.split(os.path.sep))
-    keys_uri = urlunparse(('file', keys_path, '', '', '', ''))
+    keys_path = "/".join(keys_filename.split(os.path.sep))
+    keys_uri = urlunparse(("file", keys_path, "", "", "", ""))
 
     return {
         "manifest": {"type": "awses-encrypt", "version": MANIFEST_VERSION},
