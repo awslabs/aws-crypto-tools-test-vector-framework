@@ -8,10 +8,6 @@ new test vectors or process existing test vectors.
 This specification is not limited to describing test vector manifests for a single AWS Crypto Tools
 product, but each feature will usually only apply to a single product unless otherwise specified.
 
-The AWS Crypto Tools test vector framework creates a mechanism for defining static test
-vectors and associated manifests that describe those test vectors. Each test vector provides
-information about a single test case and each manifest defines one or more test vectors.
-
 These test vectors are intended to be used to validate interoperability across implementations
 of clients, primarily targeting those clients owned by AWS Crypto Tools.
 
