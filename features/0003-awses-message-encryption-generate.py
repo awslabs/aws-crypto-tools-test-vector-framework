@@ -54,7 +54,7 @@ UNICODE_ENCRYPTION_CONTEXT = {
     "key1": "val1",
     u"unicode_key_ловие": u"unicode_value_Предисл",
 }
-BINARY_ENCRYPTION_CONTEXT = {
+UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT = {
     "key1": "val1",
     b"\x00\x01\x02".decode("utf-8"): b" \x22\x44".decode("utf-8"),
 }
@@ -62,7 +62,7 @@ ENCRYPTION_CONTEXTS = (
     EMPTY_ENCRYPTION_CONTEXT,
     NON_UNICODE_ENCRYPTION_CONTEXT,
     UNICODE_ENCRYPTION_CONTEXT,
-    BINARY_ENCRYPTION_CONTEXT,
+    UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
 )
 
 # Padding algorithms to test with each RSA Raw Master Key
@@ -201,8 +201,8 @@ def _build_tests(keys):
                             "plaintext": "small",
                             "algorithm": algorithm,
                             "frame-size": frame_size,
-                            "encryption_context": ec,
-                            "master_keys": provider_set,
+                            "encryption-context": ec,
+                            "master-keys": provider_set,
                         },
                     )
 

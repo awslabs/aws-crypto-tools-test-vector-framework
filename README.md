@@ -1,32 +1,33 @@
 # Overview
 
+This repository contains the AWS Crypto Tools test vector framework specification. The purpose
+of this specification is to provide a common mechanism for defining the structure and properties
+of test vector manifests. These manifests in turn provide information about how to either generate
+new test vectors or process existing test vectors.
+
+This specification is not limited to describing test vector manifests for a single AWS Crypto Tools
+product, but each feature will usually only apply to a single product unless otherwise specified.
+
 The AWS Crypto Tools test vector framework creates a mechanism for defining static test
-vectors and associated manifests that describe those test vectors.
+vectors and associated manifests that describe those test vectors. Each test vector provides
+information about a single test case and each manifest defines one or more test vectors.
 
 These test vectors are intended to be used to validate interoperability across implementations
 of clients, primarily targeting those clients owned by AWS Crypto Tools.
 
-# Features
+# Specification Structure
 
-These features describe the framework itself as well as the different types of supported manifests.
-Some manifest definitions include helper scripts to generate a manifest if it is desirable to 
-have a consistent starting point.
+A specification is defined as the combination of all features. Each feature is defined in a separate
+file in the [features directory](features/FEATURES.md).
 
-The intended purpose of manifests is to describe either how to generate test vectors or how to 
-process existing test vectors. This enables compatible clients' testing frameworks to validate 
-interoperability with other clients in a structured and reproducible way.
+In this specification, each feature will generally describe a single test vector manifest definition.
 
-* [Framework](./features/0000-framework.md) : The overall AWS Crypto Tools test vector framework.
-* [Meta Manifest](./features/0001-meta-manifest.md) : A manifest for identifying a group of manifests
-  that should be processed as a group
-* [Keys Manifest](./features/0002-keys.md) : A storage location for test keys used for one or many
-  test vectors.
-    * [Manifest Generator](./features/0002-keys-generate.py) : Helper tool that will generate 
-      a standard keys manifest.
-* [AWS Encryption SDK Full Ciphertext Encrypt](./features/0003-awses-encrypt.md) : A definition 
-  of full ciphertext message test vectors to create.
-    * [Manifest Generator](./features/0003-awses-encrypt-generate.py) : Helper tool that will 
-      generate a standard AWS Encryption SDK full ciphertext encrypt manifest using the keys 
-      manifest created by `0002-keys-generate.py`.
-* [AWS Encryption SDK Full Ciphertext Decrypt](./features/0004-awses-decrypt.md) : A definition 
-  of existing full ciphertext message test vectors to decrypt.
+# Glossary
+
+* **Test Vector** : Information about a single test case. Used to either process existing data
+    or create new data.
+* **Test Vector Manifest** : A document that describes one or more test vectors.
+* **Feature** : A self-contained set of behavior that is defined as part of a specification.
+    For this specification, these will usually be definitions of test vector manifests.
+* **Specification** : A collection of one or more features that in summary define a standard
+    set of behaviors and/or data formats.
