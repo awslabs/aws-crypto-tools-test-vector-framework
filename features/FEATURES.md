@@ -3,6 +3,10 @@
 For a general overview of the contents of this repository as well as a glossary of terms,
 please see the [repository readme](../README.md).
 
+## Version
+
+This specification is currently at version 1.0.0
+
 # Features
 
 These features describe the AWS Crypto Tools test vector framework as well as the different
