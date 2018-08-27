@@ -1,0 +1,5862 @@
+{
+    "manifest": {
+        "type": "awses-encrypt",
+        "version": 1
+    },
+    "keys": "file://0002-keys.v1.json",
+    "plaintexts": {
+        "small": 10240
+    },
+    "tests": {
+        "0c9c3222-b8f6-4b5f-97bc-c2a97f5255b1": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "fbd6b83b-53d8-4d3d-94a6-2fcda3fc8453": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "858a1684-8e93-4de4-bce2-792ddb56281f": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "b79f23ce-3d3d-47b8-b00b-f7a5fcc58a8e": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "53cbd6e5-c40a-45a5-8d47-1e3a4c6a569a": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "32930894-a5d0-4fbe-b096-94ff05753953": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "7497ba7c-01fe-4508-bb20-a78dc6d1e23b": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "0d54c092-921b-4eb2-a0dd-90d64b4a7f77": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "070fb5a0-0a91-4a99-8dc2-9c0c4c3eb140": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "77c5743d-4327-4eea-9109-05c951e389d9": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "ba023560-0426-4ba2-9556-9761193a8745": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "464afedf-1c49-4995-a031-0e7e584da295": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "df37d8f6-d176-4239-ae93-d6ef2b44ee9c": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "245425ea-9630-4eaf-99dc-630ef1ca02e0": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "089fc593-2c1c-4fe9-8dec-d2deb4853f1c": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1c54bbc4-3be2-4ab8-8d36-6e556c500343": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "d648912e-393e-41f9-be3d-79cb4be5d33c": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "9db31afc-4be1-4ffe-9aeb-727192d78897": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "f5f34308-6a4e-4a33-9b7f-53c65a980dd6": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "28967130-fb4d-4f4c-bc03-4ce5a809f8a5": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "4efd8f88-d3f1-47a8-aca1-37e3751d1982": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "3f48b930-9b65-419e-a908-0b1cf75f74e6": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "4f7811fb-c827-4b9d-81c6-553aee8458d1": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "2af2b211-9ee2-4b83-8998-70b69a8c1538": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "66b48a13-313c-4b45-95cf-ccc15b13cf29": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "de8897a6-4033-4c49-93c2-6e7c7200236d": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "f628fe87-cbcc-455b-a504-d2c81805a56e": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "ed9484fd-2acd-40af-9003-5aef0160affc": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "47c123d4-6378-434b-862a-5f9182e9e80e": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "e27b5a21-0486-4545-80ae-b8ad9bd09224": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "3068c557-eb12-40db-a942-f94d13ce8ee5": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "3e763588-bd32-4b40-8326-1e14530e668a": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b4f7b470-7f59-4c81-b537-381a1ea06dff": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "34ab051b-5f35-4400-94ad-495108725ff1": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2d4bd7ee-0c38-4f37-9afc-509a806d9384": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c1272443-5cea-44fb-963e-b57d1718c4e0": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "8ff8275b-66b0-4a15-a366-68f8b5b53af3": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "de6af04c-5d4c-4a61-a831-82f78a7b83a9": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2beb10b6-7915-480d-bf79-81ca13622a1e": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "50350c31-4f46-4fb1-b0c2-ce033d072d44": {
+            "plaintext": "small",
+            "algorithm": "0014",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "0c8167d8-0de1-4d83-a087-2d0112accfe6": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c968007f-2816-4929-b43e-8f1ffa7fe9c8": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "232746b8-62f3-4dca-9935-6eaafe40e1c4": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "f387ee3f-e466-435f-8310-06d79ca70988": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "1f43a1c4-3c0a-4bae-be8e-3410413980ae": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "6b5e99d2-d7a9-4c70-bd63-12345c552ff5": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "3553e7de-8755-4df4-ba65-73ce945e777e": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c50a10b6-8b66-49d0-9da4-076843756669": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "8de1b696-29fa-418e-ac1e-f77ec3fb9bb9": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "8aacf3f3-986c-4523-9c16-a00e09a595cd": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "22aa5bcf-92ee-4f6f-9bb3-d175be517635": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "042833ed-1db2-4b2c-81ee-10593fcdedff": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "4ef03199-5aa2-4fc6-a3ee-1aab41a49eff": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "a073981c-f05b-46ff-a97e-a084637b91d0": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "1027d816-c425-42fb-8e2b-c5bd38dc6647": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "cc579eb5-a542-49fd-94e9-694c21a7cefa": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "418cc85a-5ee3-40c6-ab12-521d90e044f4": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "6fefe7c4-7738-4061-b454-0628f56bc139": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b73063fc-9cc3-4e0d-ae46-7ff936cd5fd8": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "a3290f28-3b07-4e7f-9d0a-ea9f24a40b06": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "50dcbed1-70f6-4e9a-bda4-72385a81784e": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c65b2530-1d66-41c1-acae-f55bd93b118e": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "8d1ff122-8709-4b76-9e6e-c2202bab9c0e": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "de0ee00e-af0f-4c50-b920-07a637af24a2": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "d55aaaba-32b2-4b3c-a3fd-53407fb4eaf2": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "85bbf5e2-30a0-40b0-801a-1544e9d7590c": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b8d39bff-88c8-473f-86b1-eb69ab8d0016": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "aab18444-6060-480d-8a4c-fcb1b0ad2f4a": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a3398dd4-d1c4-436b-811f-2d2f7a03452e": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "ce2d7a15-446a-4708-9cb5-41ec7913d4ba": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "849eacf3-8c50-4e65-b9df-ec4c2e8b65ba": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "7119137d-5142-4939-a8fe-0068c2850325": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2be07a1f-b261-48e8-8f85-f7efdd419339": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "430feffc-2ee2-495b-84f4-44e89ac84115": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "98c9f95b-45dd-42cf-8111-8490ff1cb608": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "aee2a9b3-57a5-4811-a551-c37f92d29cb4": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "e9cc3a47-a35d-4986-8872-0b3e3f694523": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "baa41f98-c79d-4428-aff2-266a089d8cda": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "81e05c93-a4f4-4791-9433-79e54ed9c8c4": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c11b4bc7-aebc-4b29-b522-e02ef41cc277": {
+            "plaintext": "small",
+            "algorithm": "0046",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "187ad62d-d291-4bf3-9c3e-0a91f7cc863b": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "9131e0db-a7c0-435a-a840-6fab4898b862": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "cef2776a-d127-49cc-84e5-f6b84b62a39e": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "489d5ac4-73b8-449f-91d0-2d202c543133": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "079f4e15-e9b4-4db7-826b-aaec05d3385c": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "df358014-0bb7-44f2-8c14-4b20a00fc704": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2aa392c7-49b2-4a63-8416-d93f17149036": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "e11a2f0c-606d-4bfb-907c-9109626f9055": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "dadce97b-3eae-4e73-94cf-ebcb693ffdbe": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "ea1e2f64-81e4-4ad0-9e16-080b1f70a889": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a0dab78a-1ad2-4acb-8c2a-30c5ce1b1aec": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c14142c8-6c27-4c21-b9ed-d7344b245967": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "e15c8a76-3579-4e40-a426-0079aac27dd4": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "f4c86880-cda2-4d0d-a19f-638d56be2b0f": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2f95b250-1666-4e87-a564-82ede7c303ba": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "ea320881-7606-4065-9fc2-af5470193ef6": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "63cbb682-e4a3-4959-9efa-1fd7fdd28d5a": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "271f9da8-ee0b-4ce5-8a06-cfb151227f59": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "47890a49-9be9-4faf-b387-a9c6cf853348": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "552d26ee-7e84-4179-9ef3-b40131d20a96": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "3c854a1a-225d-4330-9736-8e54a0c2ecda": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "6c9116cb-b5be-4aa0-8052-1606f646f5d8": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "bd778245-0747-4a47-b0ab-0ed795d8a2f4": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1a7c7bb4-551b-4bd7-b1a0-dbadf7454162": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "60092b1d-8c5b-495c-9006-da22e3ec3eaf": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "e793ad46-f23f-477e-a3d5-080c5c59058d": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "d80523ac-dbf3-477e-8a25-aff5c6887389": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "ceb1e986-fa06-420e-9cd2-a9c7acbc5549": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "835621da-684c-4849-9860-eac650381b11": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "68b60004-4dac-43ef-bb7b-d5dd77ca042d": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "048dbeec-5444-4f64-b590-6d5a77024137": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "720107f6-0cfa-420b-9b0a-e6597d5dda5a": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a95eb337-cec5-47a3-975f-ef64e4af3dbb": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "2666c7f7-c356-4d49-b3e7-a7c7e88bec60": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "bfd845aa-5d60-415f-9701-9d7523046cba": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1edd3b78-8d62-46d6-8281-813cc556447a": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2b365cc9-279d-4e41-b707-ff6f432cad10": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "fc33ea47-8e29-4aa6-bb36-2a29aa8d7063": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b2daff8a-38e0-4e02-a44f-5a5e01a8515e": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "04e5d318-988c-480a-83a7-5ec5816bc389": {
+            "plaintext": "small",
+            "algorithm": "0078",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "0fb3e206-1585-4b10-8f6d-08e037ceec2d": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "a4dbb0d0-1ca8-4723-9592-d1fa5547439e": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b564e8b7-1fd4-4b78-a56d-ca5a07ac333b": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "bd22a702-d752-4565-8fbb-0b18e861805d": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "97418ec2-6664-43e2-a7ed-e81e07da23ac": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "a47303ee-2f45-4bdd-bc5a-09f413f9962d": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b0eeaccd-3036-498f-88d1-c34131c8d337": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "7f566bcd-8d37-4bad-9867-66b7e1dfaec0": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "fbe2787a-7407-4a21-b31f-cc1c14c3f4fe": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "b28f8eda-edbb-470e-8352-e37b3df44b52": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "dbd7e843-761f-47e9-9ef9-96a2e2b4b818": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "14e1d8c5-e307-4a63-b74d-94e393de3189": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "1b855d55-531d-4cd2-9e35-aad6aa2a7829": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "d691c832-01ae-4cb7-afeb-485663aebad7": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a840c985-1dd6-4cfd-8ee6-17f8bc67a3e0": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "21a5a277-8c27-450d-a70c-8d7f076189ad": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "66ee7b56-33a3-432d-9558-2e4e462f0146": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "b20099c8-b48d-4aa6-b920-fab2529495bc": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b76e58c7-bddb-4c8e-a2a3-bb60d2440d1d": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "ad080cbf-5abf-4f36-a64f-20918894a412": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "e7f57166-c0d0-401a-a55e-ad7ffeb4301c": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "3d53be1f-88d3-48a5-b921-1e451e4d87ba": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "873612b0-bb50-4224-b57f-71bd98990663": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "aa8aa851-d3ef-4c13-a3b8-f0def2537a41": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "c6923f40-6199-43af-97cd-652498635019": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "45def709-d3f6-40cc-91b3-e63cff11ac9d": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2f25c080-7887-499a-bb2b-3873a6e1bc80": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "5f06573d-945b-4b5c-9044-35eddaa2df99": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2858485c-17f2-480e-bd3e-086a735e542a": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "b358bc9e-6ed6-4244-a5c2-0aaeca462270": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "129625f9-6b91-4342-9d8c-32167b4df819": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1c9b30d7-efea-4df6-a725-e62ce469f0ce": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "3c7e82e7-fe9b-42d3-8900-89be1b6c66cb": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "126989f2-7f95-4d7e-83c1-1edb0136b4c9": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "25b10ce9-e1be-46b5-bc64-a5db5e46effc": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "5184bc09-7db7-460d-9d67-2b6d21d60463": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "cde222e3-ec99-469d-ba24-99ace07cdab6": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "7e4174a4-8aa8-4cd0-8da3-edef6312146f": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "57116bfd-e9fa-42f8-88b6-7c29eba46922": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "4229a781-6c81-4920-9e56-f00937c57c8b": {
+            "plaintext": "small",
+            "algorithm": "0114",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "cbd6df8a-72d3-439d-b630-6a5dc3733334": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "5bb7a0d2-fc05-49d9-9ed9-fe2190e26b3c": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "cc252038-dbcc-4d95-853f-718b1e2a2688": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "dd915099-34e5-4595-9446-f1627429bd9e": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "35ae1c36-7692-4e51-a421-205129ef3ca2": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "00ab849e-9bc6-4146-823e-90ae353b9289": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a2d3ea96-a4bc-4e49-86f1-5203ce99f6ec": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "3a0153a9-d618-48fd-b7b4-a9b205c053b7": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a6cc5480-0388-410f-87c4-67cc671fc0fb": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1dadf26a-5684-4fd2-b085-8b1c6be042f8": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "c6d60df4-4480-425d-8e91-6832655108e4": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "799d79df-2ac9-47df-bcfe-3bc753f48900": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "c72f0b29-9f89-4ec4-95b3-f85c6723b3d9": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "97a1b491-61f7-43ba-b67c-3c2c34460315": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "625987fc-d659-4466-818c-3890e72adc3b": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "b06b68e3-f72b-40a2-a0dd-d170d73513c2": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "aa2dfdaa-7e15-4416-8a46-5b916267d410": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "98a9e758-0f94-4755-8861-a68a73ee9f25": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2fb29c4f-e0de-4c17-a01d-473ac1f04567": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "eaa69a8b-3acc-47fd-9d45-d8d5fae22dd3": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a3883de8-d5a3-4015-aeb2-8366fdac4b04": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "8df6b0e5-5387-4504-a296-f08a91864785": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "39da49c2-2951-4a1f-acbf-c1b88be01d5f": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "45d669e1-5a54-4dc1-a4c0-9e6d01e7b0c4": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "7bc5e3ad-03a4-495f-8362-5f9a6dc5b3a1": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "0e2af17c-a62d-4b9c-99bc-122d4117c13b": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2c45b0f6-6527-4558-9b79-4566c7b38467": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "eec62a56-7bd8-4179-b4f6-bc2fd97a899f": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "45590939-c9c0-4620-bc7c-f37474975e23": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "aa754a77-5169-4ff8-853d-95407763e133": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "5499b35d-447c-423f-8f7f-cc402e825140": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "5e7d50be-a915-4d51-b782-5dcb3a7332db": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a5ffbdf9-3d6d-4b3a-aa95-430c8bf78a75": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "99cb5ec3-0bf3-4b96-a528-3a2359e6df10": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "69d9865b-ca25-4844-bd90-074db253838d": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "7274efac-31f2-43f9-aae6-3807122f972d": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "c70a0ae5-9494-45b6-a467-c3864267bdde": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "08fba329-c7ea-4c3f-b40e-aab82b5764ef": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "ab60e62d-bca8-4151-b008-4ca2b8253805": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "edd5a1ce-3f40-423f-868c-bf14fa2cf9ba": {
+            "plaintext": "small",
+            "algorithm": "0146",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2d02ab11-25a0-461f-843d-0e5df811affa": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "9dee9782-f2e6-4e84-9e16-768414bac54a": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "da186f3d-12b4-4759-b366-3e3606872ef0": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "3b4a2f44-4b36-44c6-a165-a80f835e1d2b": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "3d97b16c-6812-47ac-abf8-858ea41cff07": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "b4a151e7-e759-4ee6-9898-9750587a8cb2": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "9db3a7fe-5353-4e2c-8922-f2484b4eac80": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "45e67a1b-8a40-4f63-99bb-4785a3b847c9": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "3a9b8958-4307-4ac8-ac5e-4269faa851c4": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "07520a75-76c5-4cf6-bbf0-f3e9f307a71d": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "e4135196-8225-4dbf-96e1-9962c7c7d9c9": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "00706604-b3fb-499c-a2cd-796426ce4cfb": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b8c6ba6d-a96f-47ce-b390-f105f6b0f10f": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "6c8a65ed-a34a-4d0f-9dd1-064fccf8e7a9": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "8ad2cd5d-59b5-496c-bc79-5280775fa8a3": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "7d58855f-84f5-42a6-b9a7-6fb53dd05e0a": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "92cc60ba-c14a-4540-86b5-bab0720de656": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "a446aac6-051e-4690-b317-925fbbb5ebdd": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2437dcc7-a2ec-4094-bc92-678ab322f261": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c2815c27-d302-4735-b9c4-b718ff309d55": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "7d3ea0fa-783a-40d3-a601-f1f8233c1aa6": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "03a44adb-fb2f-4436-94e8-e5d28d006421": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "93cf03fb-2615-47db-8767-c7e02d8afbb5": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "86a3c21d-dfba-4349-b792-29b38c2dfdf4": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "744758e6-8d02-469e-887a-5dbcf2dfdb58": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "4140f993-f211-4b58-8892-49a021b9af96": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "5bad49d1-9bb6-491b-8ce8-8de8bc235397": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "27f9d4ef-fcde-4cd5-8524-cc335640f038": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "f392aa72-2549-4788-ac97-989fabab225b": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "986c672b-e393-40cf-9d9f-f635fc436483": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "113de2ef-be25-47cc-a4d0-02b1ff903192": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1fb17a1a-dd5d-47b5-9108-cb2a2fdc94c5": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "e0b8a972-f3ba-4c61-80e5-dad9980991e5": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "280cbb5f-1bd1-4ff8-9500-7ec80c672ad8": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "d5255e11-600f-4c76-bfd4-11b0d7cf8075": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "442b232f-b5ea-4215-9e47-e00f66e198a9": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b966c12c-1832-44ab-b952-8985ea2a5245": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "a92ed4f0-23de-4602-9f87-64fcb5496ccc": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "5e30b1eb-9222-4ecd-a107-f7fd34613d45": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "11634662-09db-421d-a0b7-19c5f6456743": {
+            "plaintext": "small",
+            "algorithm": "0178",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "584587b9-6a36-4060-938c-3773cee1c040": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c7173aa8-2468-4e29-9e44-abda60b86c51": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "406baa67-10f2-4d01-a8ac-141213de4690": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "5752aaa3-a289-4826-9384-fdca65501b3a": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "8a0f1bef-8fb6-4a7f-b988-bb54dd8d4318": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "861addc2-65e6-4a2e-ab2c-9710913dbcef": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "4b16e2d5-a722-4699-bede-62ea8c83acde": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "35a472e3-90c3-4c2b-9466-8ba5a3d74c63": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b4ccb4a5-909d-4eb6-817e-7d1fdf763a69": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "90a9e655-6622-427e-a89c-c9ab1475fb91": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "eafd304b-6f2b-4238-9448-c2e8de71384d": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "8e787609-9595-47a3-8d94-190801eefd9d": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "79107f4c-e941-41c3-8f76-bbbc87c4d188": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "d48f8775-c33f-4ab0-bfb8-98da2952d084": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "9171dc39-c6ae-4816-904c-e46ddddb7b62": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "7a72de1b-8c8c-4fd3-9996-be92b87d68a9": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "c49e52ae-e52a-4a00-91e5-34b056eb01fd": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "8c11ff8b-5fe5-40dd-a149-64deb90518b9": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "d139b1a3-83fe-46d5-90f8-3a1e0293cd51": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "7f31f6df-d7fd-408c-9913-e0754b5737ac": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "7f4433cc-b47d-44ce-90a6-d4c423ce35fd": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "cd24c3e3-f3ee-49b2-a20e-19957660b9d6": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "c0c3cdaa-6c82-426d-9580-3447da0745ba": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "0ddfd4af-94e2-4f10-a511-348ada7becbe": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "d8559a56-63d9-408a-a4b3-cb9cc040c4cc": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "2f434df0-984a-485e-8c67-de5e82f0f1a9": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "29ca7a18-9003-4751-8896-8b867c4190e7": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1741095b-cba2-43fa-820f-1f9b399dfafc": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "532d031b-e340-4bdd-9d05-e59af9db97e1": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "a22db3f2-66b2-473c-a2c5-c27f40364566": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "9a053902-c554-4ba2-b31a-7f401f664398": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "b08fb6a1-25bf-4b57-9191-8382b8bdb3fa": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "3fe10310-017a-45b7-9f86-bbcfd2858ae3": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "012b395e-f5df-42c9-aabd-8dd5301e5e1f": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "77104e04-6bab-4108-afd1-e84a753f3b4c": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "f1f1c250-8aef-4661-8289-7e0225e49de1": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "8bc9989a-3ac9-4d56-a00c-55ac73b8afd0": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "7ba47a38-2637-4b01-8518-01b2ba9a066f": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "ccb4e2a6-cbfd-4c43-b562-13c1c6a88a54": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "925efa40-8864-4b47-8f54-53bbf93d9de4": {
+            "plaintext": "small",
+            "algorithm": "0214",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "44c82c29-fe69-4e39-abe4-9fa06cca21ed": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "3d5630ec-82e9-453b-b590-816eb16424c4": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2bc1b292-ba62-40e8-966a-bee022b590c3": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "cc418f78-765e-4bc6-b089-3a12eb728fbc": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "e53a4db9-2baf-4054-8b5d-8972ef0a7993": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "e306856b-64f8-4dbb-8504-ee4ca7c4712c": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "f6866448-779b-4520-9590-007d02736fcd": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "e6975538-cdd8-48b8-a2fd-521d971d932b": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "11732811-5938-49b3-a3c9-4d1d9a3d20eb": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c75dfa1a-8d66-4493-9b96-7cdcf171c285": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "3c860e3e-97b9-4a62-9e75-bbf7741ef95c": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1f6c45cf-0e2d-469d-9a93-be6d459f2151": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "ecd56885-b9ee-4edf-87ff-1389182b76b6": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "117eef7c-53c0-4c10-a056-1f8c0d81b949": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "e95aa7f0-207e-4b64-bcbd-b54f7ca93236": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "59066042-6523-4195-9640-ad5bff3d5b32": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "0fc66bed-6d87-467f-abe1-3efc5a4cd617": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "83f88ac2-c5fd-4a31-94e8-7f7f8f932cb9": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "717e4003-6d95-41f8-aff2-2ef0e709a9ba": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "b8f84552-12c1-468a-ad5a-cfd11f2d15c8": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "880554b6-bc16-47fe-a45b-4c547c3efbf0": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "18ff8492-7359-4ef5-bfd3-a2fad00f230d": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "1b235067-b0dd-4082-ba80-b926fddb58a0": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "0ce7f883-bc04-4302-80e5-cc26308f7b64": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "0ed4a83f-4df0-4026-8e01-79e77b00f2e6": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "7bbb8bf3-81c1-4830-b03e-cf3c875d808d": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "157c08ee-d42d-4163-8824-a9df46cbd30e": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "fd25e4d3-aa98-4b5c-95d4-1ed0dee2efb4": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "17e786d0-5806-412d-908d-8f82774e4a3e": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1dcaeefc-fd5d-4115-abdc-1185797421dc": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "77965a23-7f70-4bab-a376-bec533e8204e": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "6b96ddc4-4dd3-48f2-99fb-3d32da89c64c": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "9a98f7a7-c005-4a67-a379-4606cd845cc2": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c912ee86-fddc-4af6-b133-d103baf2b4f9": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "c3b93633-3fdf-4285-940b-8c5badb5706f": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "2d713dcf-ecb8-4b95-9241-495d79d48a10": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "2086bf10-b557-4a42-8558-acc3d81a171f": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "9c10636f-dd81-41b9-9511-6c615417e16c": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "37b0db70-90a3-4a08-ba53-90246f8e339e": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "0f7324ff-b585-4b51-8475-b18464c1e0e2": {
+            "plaintext": "small",
+            "algorithm": "0346",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "f51f9225-16be-454d-9d8f-2ac054d91b66": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "4af906a4-a6bc-4a0d-9a66-4635f0542adc": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 0,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "cf01edae-2374-44c1-94fc-e3747e5e7389": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "d9c432c1-ac8f-4974-ae2a-fe7b05d04844": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "12b87b7f-409d-4cbe-b918-f16509a17257": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "4253ae74-5b9a-4459-9496-17bae4194419": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a02b5447-2562-4f73-9a6e-d16aa8f322bd": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1f5ea463-80c5-4e01-893e-7b293a6b39ef": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 0,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b2fbaf44-507c-4c52-8d1b-e5bb14bc9e46": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "9b39e050-99d9-4598-885c-2c112d3de82b": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 512,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "e8b26cc9-9b6c-4436-8688-a87b2cf4a7d6": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "f05a9279-bb26-470e-b2bb-1b3ec194dfae": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "ba953ed0-a213-4637-85c7-bd9f08e1854d": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "9bafd06b-f947-48f4-8bb5-e9cac4a913a4": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "9f36a023-f403-4090-97ae-502b2ae833b6": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "894fbeaa-3da5-4581-b51e-321bc0012e73": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 512,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a7a81885-ab25-4821-bd6f-05c489362bf0": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "a4c58584-779c-4360-aee7-13e045002560": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 4096,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "afc69974-2690-42c6-817b-12e20fc7916a": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "0aa1c881-7aa3-4406-9acb-6a2510491c5b": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "a00d5a9e-7056-44fd-9ede-be11dbb1ac33": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "055a80ba-68cb-4809-99f6-7ac1b417b493": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "97a4fb38-4f72-4308-b509-dfaa8ec64daa": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "c98c7f1c-225b-4432-8744-76804f32f05a": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 4096,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "ce090a6d-b34f-490d-8e82-43c057d67c74": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "18edc053-cdcc-4135-81d0-df71b4f3411e": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 10240,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "b9576f0e-126f-4b11-90fc-11ab47863aa5": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "3514f3d0-8d4f-49e3-b89c-f5196b2efd26": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "7f747feb-014b-4c39-866d-2028843fab93": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "754c7012-1629-48b0-a285-49b8d17f8ef6": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "d0b3565c-0b96-42e6-9b78-6f6449bcb623": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "6e766a7a-bf08-4ff8-8d27-3847bd2baf7d": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 10240,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "d62f6c1a-a677-4ba0-abf2-295d995b4545": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1a04c6d9-74ce-449e-bc48-db9ac25b3233": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 20480,
+            "encryption-context": {},
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "23d69370-3890-4741-8254-2d65838276b6": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "1631700a-dd66-496a-ad85-806aadecfb47": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "key2": "val2"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "22cff14f-16a4-448b-a777-a88f03b37579": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "7011876f-3c3c-4b41-adee-c316018994ab": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "unicode_key_\u043b\u043e\u0432\u0438\u0435": "unicode_value_\u041f\u0440\u0435\u0434\u0438\u0441\u043b"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        },
+        "1cb7c027-9103-46ea-bdc1-14897106ced0": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                }
+            ]
+        },
+        "f5ceb416-d346-478d-a643-d8a930538c09": {
+            "plaintext": "small",
+            "algorithm": "0378",
+            "frame-size": 20480,
+            "encryption-context": {
+                "key1": "val1",
+                "\u0000\u0001\u0002": " \"D"
+            },
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-decryptable"
+                },
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        }
+    }
+}
