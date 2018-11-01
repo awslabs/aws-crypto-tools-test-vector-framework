@@ -14,6 +14,7 @@
 # Only Python 3.6+ compatibility is guaranteed.
 import argparse
 import itertools
+import functools
 import json
 import os
 import sys
@@ -75,30 +76,41 @@ RAW_RSA_PADDING = (
 RAW_RSA_BLACKHOLE_PADDING = {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha256"}
 
 
-def _keys_of_type(keys, type_name):
+def _keys_for_algorithm(algorithm_name, keys):
     """Filter keys manifest keys by type.
 
+    :param str algorithm_name: Key algorithm name for which to filter
     :param dict keys: Parsed keys manifest
+    """
+    for name, key in keys["keys"].items():
+        if key.get("algorithm", None) == algorithm_name:
+            yield name, key
+
+
+def _keys_for_type(type_name, keys):
+    """Filter keys manifest keys by type.
+
     :param str type_name: Key type name for which to filter
+    :param dict keys: Parsed keys manifest
     """
     for name, key in keys["keys"].items():
         if key["type"] == type_name:
             yield name, key
 
 
-def _split_on_decryptable(keys, type_name, key_builder):
+def _split_on_decryptable(keys, filter_function, key_builder):
     """Filter keys manifest keys of specified type into two groups: those that can both encrypt
     and decrypt and those that can only encrypt.
 
     :param dict keys: Parsed keys manifest
-    :param str type_name: Key type name for which to filter
+    :param callable filter_function: Callable that will filter keys
     :param key_builder: Function that returns a properly formed master key configuration given
         a key name and configuration from the keys manifest
     :returns: list of cyclable master key configurations and list of encrypt only master key configurations
     """
     encrypt_only = []
     cyclable = []
-    for name, key in _keys_of_type(keys, type_name):
+    for name, key in filter_function(keys):
         if key["encrypt"]:
             if key["decrypt"]:
                 cyclable.append(key_builder(name, key))
@@ -116,7 +128,9 @@ def _aws_kms_providers(keys):
     def _key_builder(name, key):
         return {"type": "aws-kms", "key": name}
 
-    cyclable, encrypt_only = _split_on_decryptable(keys, "aws-kms", _key_builder)
+    cyclable, encrypt_only = _split_on_decryptable(
+        keys, functools.partial(_keys_for_type, "aws-kms"), _key_builder
+    )
 
     # Single KMS MasterKey which can be decrypted by all consumers
     for key in cyclable:
@@ -132,7 +146,7 @@ def _raw_aes_providers(keys):
 
     :param dict keys: Parsed keys manifest
     """
-    for name, key in _keys_of_type(keys, "aes"):
+    for name, key in _keys_for_algorithm("aes", keys):
         # Single AES Symmetric Static Raw MasterKey, which can be decrypted
         yield (
             {
@@ -158,7 +172,9 @@ def _raw_rsa_providers(keys):
             "encryption-algorithm": "rsa",
         }
 
-    cyclable, encrypt_only = _split_on_decryptable(keys, "rsa", _key_builder)
+    cyclable, encrypt_only = _split_on_decryptable(
+        keys, functools.partial(_keys_for_algorithm, "rsa"), _key_builder
+    )
 
     for key in cyclable:
         for padding_config in RAW_RSA_PADDING:
