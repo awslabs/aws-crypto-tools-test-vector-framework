@@ -14,6 +14,7 @@
 # Only Python 3.6+ compatibility is guaranteed.
 import argparse
 import itertools
+import functools
 import json
 import os
 import sys
@@ -75,30 +76,41 @@ RAW_RSA_PADDING = (
 RAW_RSA_BLACKHOLE_PADDING = {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha256"}
 
 
-def _keys_of_type(keys, type_name):
+def _keys_for_algorithm(algorithm_name, keys):
     """Filter keys manifest keys by type.
 
+    :param str algorithm_name: Key algorithm name for which to filter
     :param dict keys: Parsed keys manifest
+    """
+    for name, key in keys["keys"].items():
+        if key.get("algorithm", None) == algorithm_name:
+            yield name, key
+
+
+def _keys_for_type(type_name, keys):
+    """Filter keys manifest keys by type.
+
     :param str type_name: Key type name for which to filter
+    :param dict keys: Parsed keys manifest
     """
     for name, key in keys["keys"].items():
         if key["type"] == type_name:
             yield name, key
 
 
-def _split_on_decryptable(keys, type_name, key_builder):
+def _split_on_decryptable(keys, filter_function, key_builder):
     """Filter keys manifest keys of specified type into two groups: those that can both encrypt
     and decrypt and those that can only encrypt.
 
     :param dict keys: Parsed keys manifest
-    :param str type_name: Key type name for which to filter
+    :param callable filter_function: Callable that will filter keys
     :param key_builder: Function that returns a properly formed master key configuration given
         a key name and configuration from the keys manifest
     :returns: list of cyclable master key configurations and list of encrypt only master key configurations
     """
     encrypt_only = []
     cyclable = []
-    for name, key in _keys_of_type(keys, type_name):
+    for name, key in filter_function(keys):
         if key["encrypt"]:
             if key["decrypt"]:
                 cyclable.append(key_builder(name, key))
@@ -116,7 +128,9 @@ def _aws_kms_providers(keys):
     def _key_builder(name, key):
         return {"type": "aws-kms", "key": name}
 
-    cyclable, encrypt_only = _split_on_decryptable(keys, "aws-kms", _key_builder)
+    cyclable, encrypt_only = _split_on_decryptable(
+        keys, functools.partial(_keys_for_type, "aws-kms"), _key_builder
+    )
 
     # Single KMS MasterKey which can be decrypted by all consumers
     for key in cyclable:
@@ -132,7 +146,7 @@ def _raw_aes_providers(keys):
 
     :param dict keys: Parsed keys manifest
     """
-    for name, key in _keys_of_type(keys, "aes"):
+    for name, key in _keys_for_algorithm("aes", keys):
         # Single AES Symmetric Static Raw MasterKey, which can be decrypted
         yield (
             {
@@ -158,7 +172,9 @@ def _raw_rsa_providers(keys):
             "encryption-algorithm": "rsa",
         }
 
-    cyclable, encrypt_only = _split_on_decryptable(keys, "rsa", _key_builder)
+    cyclable, encrypt_only = _split_on_decryptable(
+        keys, functools.partial(_keys_for_algorithm, "rsa"), _key_builder
+    )
 
     for key in cyclable:
         for padding_config in RAW_RSA_PADDING:
@@ -205,8 +221,71 @@ def _build_tests(keys):
                     )
 
 
+def _tests_for_type(type_name, tests):
+    """Filter encrypt manifest keys by type.
+
+    :param str type_name: Key type name for which to filter
+    :param dict keys: Parsed keys manifest
+    """
+    for _name, test in tests['tests'].items():
+        for master_key in test['master-keys']:
+            if master_key['type'] == type_name:
+                yield test
+                break
+
+
+def _tests_for_algorithm(algorithm_name, tests):
+    """Filter encrypt manifest keys by algorithm name.
+
+    :param str algorithm_name: Key algorithm name for which to filter
+    :param dict keys: Parsed keys manifest
+    """
+    for _name, test in tests['tests'].items():
+        for master_key in test['master-keys']:
+            if master_key['key'].startswith(algorithm_name + '-'):
+                yield test
+                break
+
+
+def _test_manifest(keys_filename, manifest):
+    """Test that the manifest is actually complete.
+
+    :param str keys_file: Name of file containing the keys manifest
+    :param dict manifest: Full message encrypt manifest to test
+    """
+    with open(keys_filename, 'r') as keys_file:
+        keys = json.load(keys_file)
+
+    aes_key_count = len(list(_keys_for_algorithm("aes", keys)))
+    rsa_key_count = len(list(_keys_for_algorithm("rsa", keys)))
+    kms_key_count = len(list(_keys_for_type("aws-kms", keys)))
+
+    aes_test_count = len(list(_tests_for_algorithm('aes', manifest)))
+    rsa_test_count = len(list(_tests_for_algorithm('rsa', manifest)))
+    kms_test_count = len(list(_tests_for_type("aws-kms", manifest)))
+
+    iterations = len(ALGORITHM_SUITES) * len(FRAME_SIZES) * len(ENCRYPTION_CONTEXTS)
+    expected_aes_test_count = aes_key_count * iterations
+    min_rsa_test_count = rsa_key_count * iterations
+    min_kms_test_count = kms_key_count * iterations
+
+    if not all([
+        0 < expected_aes_test_count == aes_test_count,
+        0 < min_rsa_test_count <= rsa_test_count,
+        0 < min_kms_test_count <= kms_test_count
+    ]):
+        raise ValueError('Unexpected test count: \n{aes}\n{rsa}\n{kms}'.format(
+            aes='Expected: {expected} Actual: {actual}'.format(expected=expected_aes_test_count, actual=aes_test_count),
+            rsa='Minumum: {expected} Actual: {actual}'.format(expected=min_rsa_test_count, actual=rsa_test_count),
+            kms='Minumum: {expected} Actual: {actual}'.format(expected=min_kms_test_count, actual=kms_test_count)
+        ))
+
+
 def build_manifest(keys_filename):
-    """Build the test-case manifest which directs the behavior of cross-compatibility clients."""
+    """Build the test-case manifest which directs the behavior of cross-compatibility clients.
+
+    :param str keys_file: Name of file containing the keys manifest
+    """
     with open(keys_filename, "r") as keys_file:
         keys = json.load(keys_file)
 
@@ -234,6 +313,8 @@ def main(args=None):
     parsed = parser.parse_args(args)
 
     manifest = build_manifest(parsed.keys)
+
+    _test_manifest(parsed.keys, manifest)
 
     kwargs = {}
     if parsed.human:
