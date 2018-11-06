@@ -153,7 +153,7 @@ def _raw_aes_providers(keys):
                 "type": "raw",
                 "key": name,
                 "provider-id": "aws-raw-vectors-persistant",
-                "encryption_algorithm": "aes",
+                "encryption-algorithm": "aes",
             },
         )
 
