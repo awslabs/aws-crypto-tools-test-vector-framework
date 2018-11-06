@@ -23,7 +23,7 @@ Unique implementations required for promotion: 2
 
 | Repository                                                                         | Language | Pull Request                                             |
 |------------------------------------------------------------------------------------|----------|----------------------------------------------------------|
-| https://github.com/aws/aws-encryption-sdk-python/tree/master/test_vector_generator | Python   | https://github.com/aws/aws-encryption-sdk-python/pull/63 |
+| https://github.com/aws/aws-encryption-sdk-python/tree/master/test_vector_handlers  | Python   | https://github.com/aws/aws-encryption-sdk-python/pull/63 |
 | Link to GitHub repository                                                          | Language | Pull request that added support                          |
 
 ## Supported Implementations
