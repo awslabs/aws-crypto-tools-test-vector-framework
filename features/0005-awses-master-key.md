@@ -2,7 +2,7 @@
 |           |                              |
 |:----------|:-----------------------------|
 |__Feature__|AWS Encryption SDK Master Key |
-|__Version__|1                             |
+|__Version__|2                             |
 |__Created__|2016-08-13                    |
 |__Updated__|2018-08-13                    |
 
@@ -12,7 +12,7 @@ This serves as a reference of all features that this feature depends on.
 
 | Feature                                             | Min Version | Max Version |
 |-----------------------------------------------------|-------------|-------------|
-| [0002-keys](./0002-keys.md)                         | 1           | n/a         |
+| [0002-keys](./0002-keys.md)                         | 2           | n/a         |
 
 ## Experimental Implementations
 
@@ -69,7 +69,7 @@ A master key structure is defined as a JSON object with the following members:
         * `aws-kms`
         * `raw`
 * `key` : Name of key from a `keys` manifest
-* `key-id` : Master Key ID (optional) (default: `key` name or `key.key-id` for AWS KMS)
+    * The master key ID should always be `key.key-id`
 * `provider-id` : Master Key Provider ID (required for Raw Master Keys)
 * `encryption-algorithm` : Encryption Algorithm (required for Raw Master Keys)
     * Allowed Values
