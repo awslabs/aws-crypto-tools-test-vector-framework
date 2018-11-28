@@ -185,7 +185,7 @@ def _raw_rsa_providers(keys):
 
             # Multiple Asymmetric Raw MasterKeys, only one of which can be decrypted
             for blackhole in encrypt_only:
-                _blackhole_key = key.copy()
+                _blackhole_key = blackhole.copy()
                 _blackhole_key.update(RAW_RSA_BLACKHOLE_PADDING)
                 yield (_key, _blackhole_key)
 
@@ -238,7 +238,7 @@ def _tests_for_algorithm(algorithm_name, tests):
     """Filter encrypt manifest keys by algorithm name.
 
     :param str algorithm_name: Key algorithm name for which to filter
-    :param dict keys: Parsed keys manifest
+    :param dict tests: Full message encrypt manifest to test
     """
     for _name, test in tests["tests"].items():
         for master_key in test["master-keys"]:
@@ -257,7 +257,19 @@ def _test_manifest(keys_filename, manifest):
         keys = json.load(keys_file)
 
     aes_key_count = len(list(_keys_for_algorithm("aes", keys)))
-    rsa_key_count = len(list(_keys_for_algorithm("rsa", keys)))
+
+    cycleable_rsa_key_count = 0
+    black_hole_rsa_key_count = 0
+    for _name, rsa_key in _keys_for_algorithm("rsa", keys):
+        if rsa_key["encrypt"]:
+            if rsa_key["decrypt"]:
+                cycleable_rsa_key_count += 1
+            else:
+                black_hole_rsa_key_count += 1
+    rsa_key_combination_count = (cycleable_rsa_key_count * len(RAW_RSA_PADDING)) + (
+        (cycleable_rsa_key_count * len(RAW_RSA_PADDING)) * black_hole_rsa_key_count
+    )
+
     kms_key_count = len(list(_keys_for_type("aws-kms", keys)))
 
     aes_test_count = len(list(_tests_for_algorithm("aes", manifest)))
@@ -266,26 +278,26 @@ def _test_manifest(keys_filename, manifest):
 
     iterations = len(ALGORITHM_SUITES) * len(FRAME_SIZES) * len(ENCRYPTION_CONTEXTS)
     expected_aes_test_count = aes_key_count * iterations
-    min_rsa_test_count = rsa_key_count * iterations
-    min_kms_test_count = kms_key_count * iterations
+    expected_rsa_test_count = rsa_key_combination_count * iterations
+    expected_kms_test_count = kms_key_count * iterations
 
     if not all(
         [
             0 < expected_aes_test_count == aes_test_count,
-            0 < min_rsa_test_count <= rsa_test_count,
-            0 < min_kms_test_count <= kms_test_count,
+            0 < expected_rsa_test_count == rsa_test_count,
+            0 < expected_kms_test_count == kms_test_count,
         ]
     ):
         raise ValueError(
-            "Unexpected test count: \n{aes}\n{rsa}\n{kms}".format(
+            "Unexpected test count: \nAES: {aes}\nRSA: {rsa}\nAWS-KMS: {kms}".format(
                 aes="Expected: {expected} Actual: {actual}".format(
                     expected=expected_aes_test_count, actual=aes_test_count
                 ),
-                rsa="Minumum: {expected} Actual: {actual}".format(
-                    expected=min_rsa_test_count, actual=rsa_test_count
+                rsa="Expected: {expected} Actual: {actual}".format(
+                    expected=expected_rsa_test_count, actual=rsa_test_count
                 ),
-                kms="Minumum: {expected} Actual: {actual}".format(
-                    expected=min_kms_test_count, actual=kms_test_count
+                kms="Expected: {expected} Actual: {actual}".format(
+                    expected=expected_kms_test_count, actual=kms_test_count
                 ),
             )
         )
