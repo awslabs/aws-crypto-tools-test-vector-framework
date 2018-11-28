@@ -17,6 +17,7 @@ import base64
 import json
 import sys
 
+VERSION = 3
 AES_KEYS = (
     (128, b"\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x10\x11\x12\x13\x14\x15"),
     (
@@ -127,7 +128,7 @@ AWS_KMS_KEYS = (
 
 def build_manifest():
     """Build the manifest dictionary from the above key material definitions."""
-    manifest = {"manifest": {"type": "keys", "version": 1}}
+    manifest = {"manifest": {"type": "keys", "version": VERSION}}
     keys = {}
 
     for key_bits, key_bytes in AES_KEYS:
