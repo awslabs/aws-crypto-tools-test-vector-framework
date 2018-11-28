@@ -138,7 +138,7 @@ def build_manifest():
             "type": "symmetric",
             "bits": key_bits,
             "encoding": "base64",
-            "material": [base64.b64encode(key_bytes).decode("utf-8")],
+            "material": base64.b64encode(key_bytes).decode("utf-8"),
         }
 
     for key_bits, key_type, pem_key in RSA_KEYS:
@@ -151,8 +151,7 @@ def build_manifest():
             "type": key_type,
             "bits": key_bits,
             "encoding": "pem",
-            "line-separator": "\n",
-            "material": pem_key.split("\n"),
+            "material": pem_key,
         }
 
     for key_name, key_arn, decryptable in AWS_KMS_KEYS:
