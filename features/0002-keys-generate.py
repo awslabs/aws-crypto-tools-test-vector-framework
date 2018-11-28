@@ -131,7 +131,9 @@ def build_manifest():
     keys = {}
 
     for key_bits, key_bytes in AES_KEYS:
-        keys["aes-%s" % key_bits] = {
+        key_name = "aes-%s" % key_bits
+        keys[key_name] = {
+            "key-id": key_name,
             "encrypt": True,
             "decrypt": True,
             "algorithm": "aes",
@@ -166,6 +168,16 @@ def build_manifest():
     return manifest
 
 
+def _test_manifest(manifest):
+    """Test that the manifest is actually complete.
+
+    :param dict manifest: keys manifest to test
+    """
+    for key, value in manifest["keys"].items():
+        if "key-id" not in value:
+            raise ValueError("Invalid key specification: \"{}\" does not define key ID.".format(key))
+
+
 def main(args=None):
     """Entry point for CLI"""
     parser = argparse.ArgumentParser(description="Build a keys manifest.")
@@ -176,6 +188,7 @@ def main(args=None):
     parsed = parser.parse_args(args)
 
     manifest = build_manifest()
+    _test_manifest(manifest)
 
     kwargs = {}
     if parsed.human:
