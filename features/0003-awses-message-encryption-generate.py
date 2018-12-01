@@ -55,7 +55,7 @@ UNICODE_ENCRYPTION_CONTEXT = {
 }
 UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT = {
     "key1": "val1",
-    b"\x00\x01\x02".decode("utf-8"): b"\x20\x22\x44".decode("utf-8"),
+    b"\x01\x02\x03".decode("utf-8"): b"\x20\x22\x44".decode("utf-8"),
 }
 ENCRYPTION_CONTEXTS = (
     EMPTY_ENCRYPTION_CONTEXT,
