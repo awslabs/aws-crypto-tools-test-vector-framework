@@ -65,7 +65,7 @@ ENCRYPTION_CONTEXTS = (
 )
 
 # Padding algorithms to test with each RSA Raw Master Key
-RAW_RSA_PADDING = (
+RAW_RSA_PADDING_ALGORITHMS = (
     {"padding-algorithm": "pkcs1"},
     {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha1"},
     {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha256"},
@@ -73,7 +73,10 @@ RAW_RSA_PADDING = (
     {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha512"},
 )
 # Padding algorithm to use with any RSA Raw Master Keys that cannot decrypt
-RAW_RSA_BLACKHOLE_PADDING = {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha256"}
+RAW_RSA_BLACKHOLE_ARGUMENTS_OVERRIDE = {
+    "padding-algorithm": "oaep-mgf1",
+    "padding-hash": "sha256",
+}
 
 
 def _keys_for_algorithm(algorithm_name, keys):
@@ -177,7 +180,7 @@ def _raw_rsa_providers(keys):
     )
 
     for key in cyclable:
-        for padding_config in RAW_RSA_PADDING:
+        for padding_config in RAW_RSA_PADDING_ALGORITHMS:
             # Single RSA Asymmetric Static Raw MasterKey, which can be decrypted
             _key = key.copy()
             _key.update(padding_config)
@@ -186,7 +189,7 @@ def _raw_rsa_providers(keys):
             # Multiple Asymmetric Raw MasterKeys, only one of which can be decrypted
             for blackhole in encrypt_only:
                 _blackhole_key = blackhole.copy()
-                _blackhole_key.update(RAW_RSA_BLACKHOLE_PADDING)
+                _blackhole_key.update(RAW_RSA_BLACKHOLE_ARGUMENTS_OVERRIDE)
                 yield (_key, _blackhole_key)
 
 
@@ -266,8 +269,15 @@ def _test_manifest(keys_filename, manifest):
                 cycleable_rsa_key_count += 1
             else:
                 black_hole_rsa_key_count += 1
-    rsa_key_combination_count = (cycleable_rsa_key_count * len(RAW_RSA_PADDING)) + (
-        (cycleable_rsa_key_count * len(RAW_RSA_PADDING)) * black_hole_rsa_key_count
+
+    cycleable_rsa_combination_count = cycleable_rsa_key_count * len(
+        RAW_RSA_PADDING_ALGORITHMS
+    )
+    black_hole_rsa_combination_count = (
+        cycleable_rsa_combination_count * black_hole_rsa_key_count
+    )
+    rsa_key_combination_count = (
+        cycleable_rsa_combination_count + black_hole_rsa_combination_count
     )
 
     kms_key_count = len(list(_keys_for_type("aws-kms", keys)))
