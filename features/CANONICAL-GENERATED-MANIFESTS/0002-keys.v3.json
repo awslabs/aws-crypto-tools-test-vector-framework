@@ -66,5 +66,11 @@
             "encrypt": true,
             "decrypt": false
         }
+        "us-west-1-decryptable": {
+            "type":"aws-kms",
+            "key-id": "arn:aws:kms:us-west-1:658956600833:alias/EncryptDecrypt"
+            "encrypt": true,
+            "decrypt": true
+        }
     }
 }
