@@ -123,6 +123,11 @@ AWS_KMS_KEYS = (
         "arn:aws:kms:us-west-2:658956600833:alias/EncryptOnly",
         False,
     ),
+    (
+        "eu-central-1-decryptable",
+        "arn:aws:kms:eu-central-1:658956600833:alias/EncryptDecrypt",
+        True,
+    ),
 )
 
 
