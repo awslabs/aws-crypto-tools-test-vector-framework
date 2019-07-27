@@ -100,6 +100,25 @@ def _keys_for_type(type_name, keys):
         if key["type"] == type_name:
             yield name, key
 
+def _keys_for_encryptval(encrypt_value, keys):
+    """Filter keys manifest keys by type.
+
+    :param boolean encrypt_value: True/False value for which to filter encrypt
+    :param dict keys: Parsed keys manifest
+    """
+    for name, key in keys["keys"].items():
+        if key["encrypt"] == encrypt_value:
+            yield name, key
+
+def _keys_for_decryptval(decrypt_value, keys):
+    """Filter keys manifest keys by type.
+
+    :param boolean encrypt_value: True/False value for which to filter decrypt
+    :param dict keys: Parsed keys manifest
+    """
+    for name, key in keys["keys"].items():
+        if key["decrypt"] == decrypt_value:
+            yield name, key
 
 def _split_on_decryptable(keys, filter_function, key_builder):
     """Filter keys manifest keys of specified type into two groups: those that can both encrypt
@@ -260,6 +279,8 @@ def _test_manifest(keys_filename, manifest):
         keys = json.load(keys_file)
 
     aes_key_count = len(list(_keys_for_algorithm("aes", keys)))
+    black_hole_aes_key_count = len([value for value in list(_keys_for_algorithm("aes", keys)) if value in list(_keys_for_decryptval(False, keys))])
+    aes_key_combination_count = (aes_key_count-black_hole_aes_key_count+((aes_key_count-black_hole_aes_key_count)*black_hole_aes_key_count))
 
     cycleable_rsa_key_count = 0
     black_hole_rsa_key_count = 0
@@ -281,15 +302,17 @@ def _test_manifest(keys_filename, manifest):
     )
 
     kms_key_count = len(list(_keys_for_type("aws-kms", keys)))
+    black_hole_kms_key_count = len([value for value in list(_keys_for_type("aws-kms", keys)) if value in list(_keys_for_decryptval(False, keys))])
+    kms_key_combination_count = (kms_key_count-black_hole_kms_key_count+((kms_key_count-black_hole_kms_key_count)*black_hole_kms_key_count))
 
     aes_test_count = len(list(_tests_for_algorithm("aes", manifest)))
     rsa_test_count = len(list(_tests_for_algorithm("rsa", manifest)))
     kms_test_count = len(list(_tests_for_type("aws-kms", manifest)))
 
     iterations = len(ALGORITHM_SUITES) * len(FRAME_SIZES) * len(ENCRYPTION_CONTEXTS)
-    expected_aes_test_count = aes_key_count * iterations
+    expected_aes_test_count = aes_key_combination_count * iterations
     expected_rsa_test_count = rsa_key_combination_count * iterations
-    expected_kms_test_count = kms_key_count * iterations
+    expected_kms_test_count = kms_key_combination_count * iterations
 
     if not all(
         [
