@@ -101,7 +101,10 @@ Map identifying the manifest.
 
 JSON object mapping assertion names to assertion descriptions.
 
-* `specification` : URI identifying the human-readable description of the assertion. This will most often be a link to a feature, specific sub-section, or  pull request in the relevant specification repository.
+* `specification` :
+  URI identifying the human-readable description of the assertion.
+  This will most often be a link to a feature, specific sub-section,
+  or  pull request in the relevant specification repository.
 
 ### Example
 
