@@ -11,6 +11,8 @@ product, but each feature will usually only apply to a single product unless oth
 These test vectors are intended to be used to validate interoperability across implementations
 of clients, primarily targeting those clients owned by AWS Crypto Tools.
 
+[For security issue notifications, see CONTRIBUTING.md.](./CONTRIBUTING.md#security-issue-notifications)
+
 # Specification Structure
 
 A specification is defined as the combination of all features. Each feature is defined in a separate
