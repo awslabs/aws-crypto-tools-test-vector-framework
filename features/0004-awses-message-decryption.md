@@ -1,41 +1,32 @@
-
-|           |                                      |
-|:----------|:-------------------------------------|
-|__Feature__|AWS Encryption SDK Message Decryption |
-|__Version__|1                                     |
-|__Created__|2018-06-25                            |
-|__Updated__|2018-08-14                            |
+|             |                                       |
+| :---------- | :------------------------------------ |
+| **Feature** | AWS Encryption SDK Message Decryption |
+| **Version** | 2                                     |
+| **Created** | 2018-06-25                            |
+| **Updated** | 2021-05-03                            |
 
 ## Dependencies
 
 This serves as a reference of all features that this feature depends on.
 
 | Feature                                             | Min Version | Max Version |
-|-----------------------------------------------------|-------------|-------------|
+| --------------------------------------------------- | ----------- | ----------- |
 | [0002-keys](./0002-keys.md)                         | 1           | n/a         |
 | [0005-awses-master-key](./0005-awses-master-key.md) | 1           | n/a         |
-
-## Experimental Implementations
-
-This serves as a reference for which implementations support this experimental feature. This
-section should be removed once this feature is promoted from experimental status.
-
-Unique implementations required for promotion: 2
-
-| Repository                                                                         | Language | Pull Request                                             |
-|------------------------------------------------------------------------------------|----------|----------------------------------------------------------|
-| https://github.com/aws/aws-encryption-sdk-python/tree/master/test_vector_handlers  | Python   | https://github.com/aws/aws-encryption-sdk-python/pull/63 |
-| Link to GitHub repository                                                          | Language | Pull request that added support                          |
 
 ## Supported Implementations
 
 This serves as a references for which implementations support this feature. A minimum of two supporting implementations
 are required for new feature versions.
 
-| Repository                | Language | Feature Version                   | Minimum Version                                    | Pull Request                    |
-|---------------------------|----------|-----------------------------------|----------------------------------------------------|---------------------------------|
-| Link to GitHub repository | Language | Supported version of this feature | Minimum version that supports this feature version | Pull request that added support |
-| Link to GitHub repository | Language | Supported version of this feature | Minimum version that supports this feature version | Pull request that added support |
+| Repository                                                                                                                 | Language             | Feature Version                   | Minimum Version                                    | Pull Request                                                 |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------- | --------------------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| https://github.com/aws/aws-encryption-sdk-python/tree/master/test_vector_handlers                                          | Python               | 2                                 | ?                                                  | https://github.com/aws/aws-encryption-sdk-python/pull/63     |
+| https://github.com/aws/aws-encryption-sdk-java/blob/master/src/test/java/com/amazonaws/encryptionsdk/TestVectorRunner.java | Java                 | 2                                 | ?                                                  | https://github.com/aws/aws-encryption-sdk-java/pull/127      |
+| https://github.com/aws/aws-encryption-sdk-c/tree/master/aws-encryption-sdk-cpp/tests/test_vectors                          | C/C++                | 2                                 | ?                                                  | https://github.com/aws/aws-encryption-sdk-c/issues/142       |
+| https://github.com/aws/aws-encryption-sdk-javascript/tree/master/modules/integration-node                                  | Javascript (Node.js) | 2                                 | ?                                                  | https://github.com/aws/aws-encryption-sdk-javascript/pull/67 |
+| https://github.com/aws/aws-encryption-sdk-javascript/tree/master/modules/integration-browser                               | Javascript (Browser) | 2                                 | ?                                                  | https://github.com/aws/aws-encryption-sdk-javascript/pull/68 |
+| Link to GitHub repository                                                                                                  | Language             | Supported version of this feature | Minimum version that supports this feature version | Pull request that added support                              |
 
 ## Summary
 
@@ -44,15 +35,16 @@ Encryption SDK ciphertext messages along with sufficient metadata to decrypt the
 
 ## Out of Scope
 
-These manifests do not include any description of how the test vectors were created. 
+These manifests do not include any description of how the test vectors were created.
 That is covered by [0003-awses-message-encryption](0003-awses-message-encryption.md).
 
 ## Motivation
 
-We need a way of describing full AWS Encryption SDK ciphertext message test vectors and how to 
+We need a way of describing full AWS Encryption SDK ciphertext message test vectors and how to
 decrypt them. This will be used both for using an unknown implementation to decrypt known good
 test vectors and for using a known good implementation to decrypt ciphertexts generated by an
-unknown implementation.
+unknown implementation. It can also used to ensure known bad vectors or incorrect configuration
+cannot lead to successful decryption.
 
 ## Guide-level Explanation
 
@@ -60,18 +52,19 @@ This type of manifest describes test cases of full AWS Encryption SDK ciphertext
 corresponding plaintexts. Each test case definition includes metadata that describes the master
 key(s) required for decryption.
 
-In addition to describing the test cases, the manifest also identifies the client and version 
+In addition to describing the test cases, the manifest also identifies the client and version
 that created the ciphertext.
 
 ### Processing Workflow
 
 To process a manifest of this type, a compatible handler must first read a message decryption
 manifest and the keys manifest that it must identify. This will give the handler with enough
-information about the test cases to successfully process them.
+information about the test cases to successfully process them, including whether the decryption
+is expected to succeed or fail.
 
 The handler must now process the described test cases, decrypting the identified ciphertext
-and validating the result against the identified plaintext.
-
+and validating the result against the identified plaintext, or verifying that decryption
+fails as expected.
 
 ## Reference-level Explanation
 
@@ -81,17 +74,17 @@ and validating the result against the identified plaintext.
 
 Map identifying the manifest.
 
-* `type` : Identifies the manifest as an AWS Encryption SDK message decryption manifest.
-    * Must be `awses-decrypt`
-* `version` : Identifies the version of this feature document that describes the manifest.
+-   `type` : Identifies the manifest as an AWS Encryption SDK message decryption manifest.
+    -   Must be `awses-decrypt`
+-   `version` : Identifies the version of this feature document that describes the manifest.
 
 #### client
 
 Identifies the client used to generate these test vectors.
 
-* `name`: Identifies the client
-  * If the client is on github, must the the github repository name (ex: `awslabs/aws-encryption-sdk-python`)
-* `version`: Identifies the client version
+-   `name`: Identifies the client
+    -   If the client is on github, must the the github repository name (ex: `awslabs/aws-encryption-sdk-python`)
+-   `version`: Identifies the client version
 
 #### keys
 
@@ -101,10 +94,14 @@ URI identifying a keys manifest to use with all test cases.
 
 JSON object mapping test case IDs to test case descriptions.
 
-* `description` : Description of ciphertext test case (optional)
-* `plaintext` : URI that identifies the plaintext
-* `ciphertext` : URI that identifies the ciphertext
-* `master-keys` : List of master key descriptions as defined in [0005-awses-master-key](./0005-awses-master-key.md)
+-   `description` : Description of ciphertext test case (optional)
+-   `ciphertext` : URI that identifies the ciphertext
+-   `master-keys` : List of master key descriptions as defined in [0005-awses-master-key](./0005-awses-master-key.md)
+-   `result` : Describes the expected result of decryption. Will contain exactly one of the following elements:
+    -   `output` : Indicates the test case must succeed.
+        -   `plaintext` : URI that identifies the plaintext.
+    -   `error` : Indicates the test case must fail.
+        -   `error-description` : Description of why the ciphertext and/or configuration is invalid and decryption must fail. This string is only for documentation and debugging, and does not specify an expected error type or message.
 
 ### Example
 
@@ -121,30 +118,73 @@ JSON object mapping test case IDs to test case descriptions.
     "keys": "file://relative/file/path.json",
     "tests": {
         "2d1e0da9-74f8-4817-842d-c2b973abed7c": {
-            "description": "Single raw rsa provider encryption",
-            "plaintext": "file://relative/path/to/plaintext",
+            "description": "Single raw rsa provider decryption",
             "ciphertext": "file://relative/path/to/ciphertext",
             "master-keys": [
                 {
                     "type": "raw",
-                    "provider-id": "aws-raw-vectors-persistant",
+                    "provider-id": "aws-raw-vectors-persistent",
                     "key": "rsa-2048",
                     "encryption-algorithm": "rsa",
                     "padding-algorithm": "oaep-mgf1",
                     "padding-hash": "sha256"
                 }
-            ]
+            ],
+            "result": {
+                "output": {
+                    "plaintext": "file://relative/path/to/plaintext"
+                }
+            }
         },
         "f7f3416b-7527-4108-8d15-6d0d5a377a2c": {
-            "description": "Single aws kms provider encryption",
-            "plaintext": "file://relative/path/to/plaintext",
+            "description": "Single aws kms provider decryption",
             "ciphertext": "file://relative/path/to/ciphertext",
             "master-keys": [
                 {
                     "type": "aws-kms",
                     "key": "us-west-2-decryptable"
                 }
-            ]
+            ],
+            "result": {
+                "output": {
+                    "plaintext": "file://relative/path/to/plaintext"
+                }
+            }
+        },
+        "aeffc58b-2091-4a1a-a974-715ffb777b71": {
+            "description": "Single aws kms provider decryption - no permissions",
+            "ciphertext": "file://relative/path/to/ciphertext",
+            "master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ],
+            "result": {
+                "error": {
+                    "error-description": "Permission denied when decrypting data key"
+                }
+            }
+        },
+        "b00a4286-2a29-412b-afed-4a2948750370": {
+            "description": "Signed message provided to unsigned-only API",
+            "ciphertext": "file://relative/path/to/ciphertext",
+            "master-keys": [
+                {
+                    "type": "raw",
+                    "provider-id": "aws-raw-vectors-persistent",
+                    "key": "rsa-2048",
+                    "encryption-algorithm": "rsa",
+                    "padding-algorithm": "oaep-mgf1",
+                    "padding-hash": "sha256"
+                }
+            ],
+            "decryption-method": "streaming-unsigned-only",
+            "result": {
+                "error": {
+                    "error-description": "Signed message input to streaming unsigned-only decryption method"
+                }
+            }
         }
     }
 }

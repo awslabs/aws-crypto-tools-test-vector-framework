@@ -1,0 +1,213 @@
+|             |                                                  |
+| :---------- | :----------------------------------------------- |
+| **Feature** | AWS Encryption SDK Message Decryption Generation |
+| **Version** | 1                                                |
+| **Created** | 2021-05-03                                       |
+| **Updated** |                                                  |
+
+## Dependencies
+
+This serves as a reference of all features that this feature depends on.
+
+| Feature                                                             | Min Version | Max Version |
+| ------------------------------------------------------------------- | ----------- | ----------- |
+| [0002-keys](./0002-keys.md)                                         | 1           | n/a         |
+| [0003-awses-message-encryption](./0003-awses-message-encryption.md) | 1           | n/a         |
+
+## Experimental Implementations
+
+This serves as a reference for which implementations support this experimental feature. This
+section should be removed once this feature is promoted from experimental status.
+
+Unique implementations required for promotion: 2
+
+| Repository                | Language | Pull Request                    |
+| ------------------------- | -------- | ------------------------------- |
+| Link to GitHub repository | Language | Pull request that added support |
+
+## Supported Implementations
+
+This serves as a references for which implementations support this feature. A minimum of two supporting implementations
+are required for new feature versions.
+
+| Repository                | Language | Feature Version                   | Minimum Version                                    | Pull Request                    |
+| ------------------------- | -------- | --------------------------------- | -------------------------------------------------- | ------------------------------- |
+| Link to GitHub repository | Language | Supported version of this feature | Minimum version that supports this feature version | Pull request that added support |
+
+## Summary
+
+An AWS Encryption SDK Message Decryption Generation manifest defines rules for generating
+AWS Encryption SDK Message Decryption manifests.
+
+## Out of Scope
+
+## Motivation
+
+We need a way of describing all scenarios that we want to cover with test vectors for full AWS
+Encryption SDK ciphertext messages. This will be used for generating known good test vectors
+with a known good implementation.
+
+Note that this scope was originally also part of the motivation for [0003-awses-message-encryption](0003-awses-message-encryption.md)
+but has been extracted into this feature in order to better distinguish encryption test cases
+from specifications for generating decryption test cases. The latter now supports decryption test cases
+that are expected to fail, and the former may now be extended in the future to support negative test cases
+as well.
+
+## Guide-level Explanation
+
+This type of manifest describes test vectors to create. Processing these test scenarios will result
+in complete AWS Encryption SDK ciphertext messages along with a corresponding
+[0004-awses-message-decryption](0004-awses-message-decryption.md) manifest.
+
+Each test scenario includes all necessary instructions to construct a ciphertext message. This includes
+all necessary inputs including algorithm suite, frame size, encryption context, and master key(s). They
+also optionally include instructions on how to attempt decryption on the resulting ciphertext messages.
+
+### Processing Workflow
+
+In this description, the handler's "destination" is a location (file directory, S3 bucket, etc)
+to which a handler will write generated data: plaintexts, ciphertexts, and manifests.
+
+To process a manifest of this type, a compatible handler must first read a message decryption
+generation manifest and the keys manifest that it must identify. This will give the handler sufficient
+information about what scenarios should be used to generate ciphertexts.
+
+One of the things that this manifest type specifies is named plaintext descriptions. These
+plaintexts must now be generated and written to the handler's destination. They are used
+as the input plaintexts for the test scenarios.
+
+The handler must now process the described test scenarios. Each scenario will result
+in ciphertext data being written to the handler's destination along with a test case description
+that will be included in the message decryption manifest.
+
+Once all test scenarios are processed, the test case descriptions are used to build an
+AWS Encryption SDK Message Decryption manifest. This manifest is then written to the
+handler's destination along with the keys manifest.
+
+## Reference-level Explanation
+
+The `0006-awses-message-decryption-generation-generate.py` script in this package will generate a manifest that describes
+the below test cases and references the keys manifest generated by `0002-keys-generate.py`. This
+should be treated as the canonical AWS Encryption SDK message decryption generation manifest file, defining
+all message decryption test vectors that a complete implementation must be able to generate.
+
+### Contents
+
+#### manifest
+
+Map identifying the manifest.
+
+-   `type` : Identifies the manifest as an AWS Encryption SDK message encryption manifest.
+    -   Must be `awses-decrypt-generate`
+-   `version` : Identifies the version of this feature document that describes the manifest.
+
+#### keys
+
+URI identifying a [keys manifest](./0002-keys.md) to use with all tests.
+
+#### plaintexts
+
+Map of plaintext names to size in bytes.
+
+These plaintexts will be generated by the handler and should be random byte vectors of the specified
+number of bytes.
+
+#### tests
+
+Map object mapping a test case ID to a test case description that describes how to generate one or more
+test vectors.
+
+-   `encryption-scenario` : Specification of the input parameters to use in creating the ciphertext, in the
+    same format used to specify tests in [0003-awses-message-encryption](0003-awses-message-encryption.md#tests).
+-   `tampering` : Optional specification indicating a method of deriving vectors that are required to fail from a given good message. Each resulting decryption test vector will include `"result": { "error": ... }`. Will contain exactly one of the following elements:
+    -   `change-edk-provider-info` : List of alternate values for the provider info field of all encrypted data keys.
+-   `decryption-master-keys` : Optional list of master key descriptions as defined in [0005-awses-master-key](0005-awses-master-key.md).
+-   `result` : Optional specification of the expected result of decryption. Defaults to successful decryption.
+    See [0004-awses-message-decryption](0004-awses-message-decryption.md#tests) for details.
+
+### Scenarios to test
+
+These are a set of scenarios that we know we want to test for all implementations. The `0006-awses-message-decryption-generate.py`
+script will generate a manifest that correctly describes these scenarios. Note that at a minimum, this includes
+all encryption scenarios specified in [0003-awses-message-encryption](0003-awses-message-encryption.md#scenarios-to-test).
+
+### Example
+
+```json
+{
+    "manifest": {
+        "type": "awses-decrypt-generate",
+        "version": 1
+    },
+    "keys": "file://relative/file/path.json",
+    "plaintexts": {
+        "small": 1024
+    },
+    "tests": {
+        "2d1e0da9-74f8-4817-842d-c2b973abed7c": {
+            "encryption-scenario": {
+                "plaintext": "small",
+                "algorithm": "0014",
+                "frame-size": 1024,
+                "encryption-context": {},
+                "master-keys": [
+                    {
+                        "type": "raw",
+                        "provider-id": "aws-raw-vectors-persistant",
+                        "key": "rsa-4096-private",
+                        "encryption-algorithm": "rsa",
+                        "padding-algorithm": "oaep-mgf1",
+                        "padding-hash": "sha256"
+                    }
+                ]
+            }
+        },
+        "f7f3416b-7527-4108-8d15-6d0d5a377a2c": {
+            "encryption-scenario": {
+                "plaintext": "small",
+                "algorithm": "0378",
+                "frame-size": 500,
+                "encryption-context": {
+                    "classification": "secret squirrel",
+                    "nuts": "acorn"
+                },
+                "master-keys": [
+                    {
+                        "type": "aws-kms",
+                        "key": "us-west-2-decryptable"
+                    },
+                    {
+                        "type": "aws-kms",
+                        "key": "us-west-2-encrypt-only"
+                    }
+                ]
+            }
+        },
+        "b5817bce-33b5-4336-b859-ffe0f83e5314": {
+            "encryption-scenario": {
+                "plaintext": "tiny",
+                "algorithm": "0578",
+                "frame-size": 500,
+                "encryption-context": {},
+                "master-keys": [
+                    {
+                        "type": "aws-kms",
+                        "key": "us-west-2-decryptable"
+                    }
+                ]
+            },
+            "tampering": {
+                "change-edk-provider-info": [
+                    "arn:aws:kms:us-west-2:658956600833:alias/EncryptOnly"
+                ]
+            },
+            "decryption-master-keys": [
+                {
+                    "type": "aws-kms",
+                    "key": "us-west-2-encrypt-only"
+                }
+            ]
+        }
+    }
+}
+```
