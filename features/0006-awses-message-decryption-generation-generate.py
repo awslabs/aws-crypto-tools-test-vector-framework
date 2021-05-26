@@ -30,7 +30,13 @@ from awses_message_encryption_utils import (
     _raw_aes_providers
 )
 
-MANIFEST_VERSION = 1
+MANIFEST_VERSION = 2
+
+TAMPERINGS = (
+    "truncate",
+    "mutate",
+    "half-sign",
+)
 
 def _build_tests(keys):
     """Build all tests to define in manifest, building from current rules and provided keys manifest.
@@ -53,7 +59,55 @@ def _build_tests(keys):
                             }
                         },
                     )
-    
+
+    yield (
+        str(uuid.uuid4()),
+        {
+            "encryption-scenario": {
+                "plaintext": "tiny",
+                "algorithm": "0178",
+                "frame-size": 512,
+                "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+                "master-keys": next(_raw_aes_providers(keys)),
+            },
+            "decryption-method": "streaming-unsigned-only"
+        },
+    )
+
+    yield (
+        str(uuid.uuid4()),
+        {
+            "encryption-scenario": {
+                "plaintext": "tiny",
+                "algorithm": "0378",
+                "frame-size": 512,
+                "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+                "master-keys": next(_raw_aes_providers(keys)),
+            },
+            "decryption-method": "streaming-unsigned-only",
+            "result": {
+                "error": {
+                    "error-description": "Signed message input to streaming unsigned-only decryption method"
+                }
+            }
+        }
+    )
+
+    for tampering in TAMPERINGS:
+        yield (
+            str(uuid.uuid4()),
+            {
+                "encryption-scenario": {
+                    "plaintext": "tiny",
+                    "algorithm": "0478" if tampering == "half-sign" else "0578",
+                    "frame-size": 512,
+                    "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+                    "master-keys": next(_raw_aes_providers(keys)),
+                },
+                "tampering": tampering
+            }
+        )
+
     yield (
         str(uuid.uuid4()),
         {
