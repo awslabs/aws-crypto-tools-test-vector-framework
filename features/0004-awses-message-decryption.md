@@ -168,6 +168,26 @@ JSON object mapping test case IDs to test case descriptions.
                     "error-description": "Permission denied when decrypting data key"
                 }
             }
+        },
+        "b00a4286-2a29-412b-afed-4a2948750370": {
+            "description": "Signed message provided to unsigned-only API",
+            "ciphertext": "file://relative/path/to/ciphertext",
+            "master-keys": [
+                {
+                    "type": "raw",
+                    "provider-id": "aws-raw-vectors-persistent",
+                    "key": "rsa-2048",
+                    "encryption-algorithm": "rsa",
+                    "padding-algorithm": "oaep-mgf1",
+                    "padding-hash": "sha256"
+                }
+            ],
+            "decryption-method": "streaming-unsigned-only",
+            "result": {
+                "error": {
+                    "error-description": "Signed message input to streaming unsigned-only decryption method"
+                }
+            }
         }
     }
 }
