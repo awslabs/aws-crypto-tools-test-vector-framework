@@ -1,9 +1,9 @@
 |             |                                                  |
 | :---------- | :----------------------------------------------- |
 | **Feature** | AWS Encryption SDK Message Decryption Generation |
-| **Version** | 1                                                |
+| **Version** | 2                                                |
 | **Created** | 2021-05-03                                       |
-| **Updated** |                                                  |
+| **Updated** | 2021-05-27                                       |
 
 ## Dependencies
 
@@ -121,6 +121,12 @@ test vectors.
     same format used to specify tests in [0003-awses-message-encryption](0003-awses-message-encryption.md#tests).
 -   `tampering` : Optional specification indicating a method of deriving vectors that are required to fail from a given good message. Each resulting decryption test vector will include `"result": { "error": ... }`. Will contain exactly one of the following elements:
     -   `change-edk-provider-info` : List of alternate values for the provider info field of all encrypted data keys.
+    -   `truncate` : Creates multiple decrypt test vectors that must fail by truncating the encrypted message at N bytes,
+        for every N from 1 to one less than the number of bytes in the message length.
+    -   `mutate` : Creates multiple decrypt test vectors that must fail by flipping the Nth bit,
+        for every N from 0 to one less than the number of bits in the message.
+    -   `half-sign` : Creates a decrypt test vector that must fail by using a custom CMM that generates signing materials,
+        even when the request identifies an unsigned algorithm suite.
 -   `decryption-master-keys` : Optional list of master key descriptions as defined in [0005-awses-master-key](0005-awses-master-key.md).
 -   `result` : Optional specification of the expected result of decryption. Defaults to successful decryption.
     See [0004-awses-message-decryption](0004-awses-message-decryption.md#tests) for details.
@@ -137,7 +143,7 @@ all encryption scenarios specified in [0003-awses-message-encryption](0003-awses
 {
     "manifest": {
         "type": "awses-decrypt-generate",
-        "version": 1
+        "version": 2
     },
     "keys": "file://relative/file/path.json",
     "plaintexts": {
@@ -182,6 +188,23 @@ all encryption scenarios specified in [0003-awses-message-encryption](0003-awses
                     }
                 ]
             }
+        },
+        "b5817bce-33b5-4336-b859-ffe0f83e5314": {
+            "encryption-scenario": {
+                "plaintext": "tiny",
+                "algorithm": "0578",
+                "frame-size": 500,
+                "encryption-context": {},
+                "master-keys": [
+                    {
+                        "type": "raw",
+                        "key": "aes-128",
+                        "provider-id": "aws-raw-vectors-persistant",
+                        "encryption-algorithm": "aes"
+                    }
+                ]
+            },
+            "tampering-method": "truncate"
         },
         "b5817bce-33b5-4336-b859-ffe0f83e5314": {
             "encryption-scenario": {

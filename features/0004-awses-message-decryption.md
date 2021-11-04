@@ -1,9 +1,9 @@
 |             |                                       |
 | :---------- | :------------------------------------ |
 | **Feature** | AWS Encryption SDK Message Decryption |
-| **Version** | 2                                     |
+| **Version** | 3                                     |
 | **Created** | 2018-06-25                            |
-| **Updated** | 2021-05-03                            |
+| **Updated** | 2021-05-27                            |
 
 ## Dependencies
 
@@ -97,6 +97,9 @@ JSON object mapping test case IDs to test case descriptions.
 -   `description` : Description of ciphertext test case (optional)
 -   `ciphertext` : URI that identifies the ciphertext
 -   `master-keys` : List of master key descriptions as defined in [0005-awses-master-key](./0005-awses-master-key.md)
+-   `decryption-method` : Optional specification of which decryption API method to use. Currently the only valid value
+    is `streaming-unsigned-only`. If omitted, handlers should attempt decryption with as many variations
+    as possible, including both one-shot and streaming decryption.
 -   `result` : Describes the expected result of decryption. Will contain exactly one of the following elements:
     -   `output` : Indicates the test case must succeed.
         -   `plaintext` : URI that identifies the plaintext.
@@ -109,7 +112,7 @@ JSON object mapping test case IDs to test case descriptions.
 {
     "manifest": {
         "type": "awses-decrypt",
-        "version": 1
+        "version": 3
     },
     "client": {
         "name": "awslabs/aws-encryption-sdk-python",
@@ -163,6 +166,26 @@ JSON object mapping test case IDs to test case descriptions.
             "result": {
                 "error": {
                     "error-description": "Permission denied when decrypting data key"
+                }
+            }
+        },
+        "b00a4286-2a29-412b-afed-4a2948750370": {
+            "description": "Signed message provided to unsigned-only API",
+            "ciphertext": "file://relative/path/to/ciphertext",
+            "master-keys": [
+                {
+                    "type": "raw",
+                    "provider-id": "aws-raw-vectors-persistent",
+                    "key": "rsa-2048",
+                    "encryption-algorithm": "rsa",
+                    "padding-algorithm": "oaep-mgf1",
+                    "padding-hash": "sha256"
+                }
+            ],
+            "decryption-method": "streaming-unsigned-only",
+            "result": {
+                "error": {
+                    "error-description": "Signed message input to streaming unsigned-only decryption method"
                 }
             }
         }
