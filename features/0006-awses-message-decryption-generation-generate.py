@@ -60,6 +60,23 @@ def _build_tests(keys):
                         },
                     )
 
+    for algorithm in ALGORITHM_SUITES:
+        for frame_size in FRAME_SIZES:
+            for ec in ENCRYPTION_CONTEXTS:
+                for provider_set in _providers(keys):
+                    yield (
+                        str(uuid.uuid4()),
+                        {
+                            "encryption-scenario": {
+                                "plaintext": "zero",
+                                "algorithm": algorithm,
+                                "frame-size": frame_size,
+                                "encryption-context": ec,
+                                "master-keys": provider_set,
+                            }
+                        },
+                    )
+
     yield (
         str(uuid.uuid4()),
         {

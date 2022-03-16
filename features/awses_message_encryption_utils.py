@@ -33,7 +33,7 @@ ALGORITHM_SUITES = (
     "0578"
 )
 
-PLAINTEXTS = {"tiny": 10, "small": 10 * 1024}
+PLAINTEXTS = {"zero": 0, "tiny": 10, "small": 10 * 1024}
 
 FRAME_SIZES = (
     0,  # Unframed
