@@ -11,23 +11,24 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 #
-# Only Python 3.6+ compatibility is guaranteed.
+# Only Python 3.7+ compatibility is guaranteed.
 
 import argparse
-import os
 import json
+import os
 import sys
 from urllib.parse import urlunparse
+
 from awses_message_encryption_utils import (
+    ALGORITHM_SUITES,
+    ENCRYPTION_CONTEXTS,
+    FRAME_SIZES,
     PLAINTEXTS,
     RAW_RSA_PADDING_ALGORITHMS,
-    ALGORITHM_SUITES,
-    FRAME_SIZES,
-    ENCRYPTION_CONTEXTS,
-    build_tests,
     _keys_for_algorithm,
     _keys_for_decryptval,
-    _keys_for_type
+    _keys_for_type,
+    build_tests,
 )
 
 MANIFEST_VERSION = 2
@@ -69,8 +70,14 @@ def _test_manifest(keys_filename, manifest):
         keys = json.load(keys_file)
 
     aes_key_count = len(list(_keys_for_algorithm("aes", keys)))
-    black_hole_aes_key_count = len([value for value in list(_keys_for_algorithm("aes", keys)) if value in list(_keys_for_decryptval(False, keys))])
-    aes_key_combination_count = (aes_key_count-black_hole_aes_key_count+((aes_key_count-black_hole_aes_key_count)*black_hole_aes_key_count))
+    black_hole_aes_key_count = len(
+        [value for value in list(_keys_for_algorithm("aes", keys)) if value in list(_keys_for_decryptval(False, keys))]
+    )
+    aes_key_combination_count = (
+        aes_key_count
+        - black_hole_aes_key_count
+        + ((aes_key_count - black_hole_aes_key_count) * black_hole_aes_key_count)
+    )
 
     cycleable_rsa_key_count = 0
     black_hole_rsa_key_count = 0
@@ -81,19 +88,19 @@ def _test_manifest(keys_filename, manifest):
             else:
                 black_hole_rsa_key_count += 1
 
-    cycleable_rsa_combination_count = cycleable_rsa_key_count * len(
-        RAW_RSA_PADDING_ALGORITHMS
-    )
-    black_hole_rsa_combination_count = (
-        cycleable_rsa_combination_count * black_hole_rsa_key_count
-    )
-    rsa_key_combination_count = (
-        cycleable_rsa_combination_count + black_hole_rsa_combination_count
-    )
+    cycleable_rsa_combination_count = cycleable_rsa_key_count * len(RAW_RSA_PADDING_ALGORITHMS)
+    black_hole_rsa_combination_count = cycleable_rsa_combination_count * black_hole_rsa_key_count
+    rsa_key_combination_count = cycleable_rsa_combination_count + black_hole_rsa_combination_count
 
     kms_key_count = len(list(_keys_for_type("aws-kms", keys)))
-    black_hole_kms_key_count = len([value for value in list(_keys_for_type("aws-kms", keys)) if value in list(_keys_for_decryptval(False, keys))])
-    kms_key_combination_count = (kms_key_count-black_hole_kms_key_count+((kms_key_count-black_hole_kms_key_count)*black_hole_kms_key_count))
+    black_hole_kms_key_count = len(
+        [value for value in list(_keys_for_type("aws-kms", keys)) if value in list(_keys_for_decryptval(False, keys))]
+    )
+    kms_key_combination_count = (
+        kms_key_count
+        - black_hole_kms_key_count
+        + ((kms_key_count - black_hole_kms_key_count) * black_hole_kms_key_count)
+    )
 
     aes_test_count = len(list(_tests_for_algorithm("aes", manifest)))
     rsa_test_count = len(list(_tests_for_algorithm("rsa", manifest)))
@@ -147,12 +154,8 @@ def build_manifest(keys_filename):
 
 def main(args=None):
     """Entry point for CLI"""
-    parser = argparse.ArgumentParser(
-        description="Build an AWS Encryption SDK encrypt message manifest."
-    )
-    parser.add_argument(
-        "--human", action="store_true", help="Print human-readable JSON"
-    )
+    parser = argparse.ArgumentParser(description="Build an AWS Encryption SDK encrypt message manifest.")
+    parser.add_argument("--human", action="store_true", help="Print human-readable JSON")
     parser.add_argument("--keys", required=True, help="Keys manifest to use")
 
     parsed = parser.parse_args(args)
