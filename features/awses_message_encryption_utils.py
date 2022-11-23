@@ -11,27 +11,15 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 #
-# Only Python 3.6+ compatibility is guaranteed.
+# Only Python 3.7+ compatibility is guaranteed.
 
-import itertools
 import functools
+import itertools
 import uuid
 
 # AWS Encryption SDK supported algorithm suites
 # https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/algorithms-reference.html
-ALGORITHM_SUITES = (
-    "0014",
-    "0046",
-    "0078",
-    "0114",
-    "0146",
-    "0178",
-    "0214",
-    "0346",
-    "0378",
-    "0478",
-    "0578"
-)
+ALGORITHM_SUITES = ("0014", "0046", "0078", "0114", "0146", "0178", "0214", "0346", "0378", "0478", "0578")
 
 PLAINTEXTS = {"zero": 0, "tiny": 10, "small": 10 * 1024}
 
@@ -47,7 +35,7 @@ EMPTY_ENCRYPTION_CONTEXT = {}
 NON_UNICODE_ENCRYPTION_CONTEXT = {"key1": "val1", "key2": "val2"}
 UNICODE_ENCRYPTION_CONTEXT = {
     "key1": "val1",
-    u"unicode_key_ловие": u"unicode_value_Предисл",
+    "unicode_key_ловие": "unicode_value_Предисл",
 }
 UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT = {
     "key1": "val1",
@@ -74,6 +62,7 @@ RAW_RSA_BLACKHOLE_ARGUMENTS_OVERRIDE = {
     "padding-hash": "sha256",
 }
 
+
 def _keys_for_algorithm(algorithm_name, keys):
     """Filter keys manifest keys by type.
 
@@ -95,6 +84,7 @@ def _keys_for_type(type_name, keys):
         if key["type"] == type_name:
             yield name, key
 
+
 def _keys_for_encryptval(encrypt_value, keys):
     """Filter keys manifest keys by type.
 
@@ -105,6 +95,7 @@ def _keys_for_encryptval(encrypt_value, keys):
         if key["encrypt"] == encrypt_value:
             yield name, key
 
+
 def _keys_for_decryptval(decrypt_value, keys):
     """Filter keys manifest keys by type.
 
@@ -114,6 +105,7 @@ def _keys_for_decryptval(decrypt_value, keys):
     for name, key in keys["keys"].items():
         if key["decrypt"] == decrypt_value:
             yield name, key
+
 
 def _split_on_decryptable(keys, filter_function, key_builder):
     """Filter keys manifest keys of specified type into two groups: those that can both encrypt
@@ -145,9 +137,7 @@ def _aws_kms_providers(keys):
     def _key_builder(name, key):
         return {"type": "aws-kms", "key": name}
 
-    cyclable, encrypt_only = _split_on_decryptable(
-        keys, functools.partial(_keys_for_type, "aws-kms"), _key_builder
-    )
+    cyclable, encrypt_only = _split_on_decryptable(keys, functools.partial(_keys_for_type, "aws-kms"), _key_builder)
 
     # Single KMS MasterKey which can be decrypted by all consumers
     for key in cyclable:
@@ -189,9 +179,7 @@ def _raw_rsa_providers(keys):
             "encryption-algorithm": "rsa",
         }
 
-    cyclable, encrypt_only = _split_on_decryptable(
-        keys, functools.partial(_keys_for_algorithm, "rsa"), _key_builder
-    )
+    cyclable, encrypt_only = _split_on_decryptable(keys, functools.partial(_keys_for_algorithm, "rsa"), _key_builder)
 
     for key in cyclable:
         for padding_config in RAW_RSA_PADDING_ALGORITHMS:
@@ -212,9 +200,7 @@ def _providers(keys):
 
     :param dict keys: Parsed keys manifest
     """
-    return itertools.chain(
-        _aws_kms_providers(keys), _raw_aes_providers(keys), _raw_rsa_providers(keys)
-    )
+    return itertools.chain(_aws_kms_providers(keys), _raw_aes_providers(keys), _raw_rsa_providers(keys))
 
 
 def build_tests(keys):

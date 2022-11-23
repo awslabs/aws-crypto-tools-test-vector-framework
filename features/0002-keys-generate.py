@@ -11,7 +11,7 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 #
-# Only Python 3.6+ compatibility is guaranteed.
+# Only Python 3.7+ compatibility is guaranteed.
 import argparse
 import base64
 import json
@@ -22,10 +22,7 @@ AES_KEYS = (
     (128, b"\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x10\x11\x12\x13\x14\x15"),
     (
         192,
-        (
-            b"\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x10\x11\x12\x13\x14\x15\x16"
-            b"\x17\x18\x19\x20\x21\x22\x23"
-        ),
+        (b"\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x10\x11\x12\x13\x14\x15\x16" b"\x17\x18\x19\x20\x21\x22\x23"),
     ),
     (
         256,
@@ -176,15 +173,13 @@ def _test_manifest(manifest):
     """
     for key, value in manifest["keys"].items():
         if "key-id" not in value:
-            raise ValueError("Invalid key specification: \"{}\" does not define key ID.".format(key))
+            raise ValueError('Invalid key specification: "{}" does not define key ID.'.format(key))
 
 
 def main(args=None):
     """Entry point for CLI"""
     parser = argparse.ArgumentParser(description="Build a keys manifest.")
-    parser.add_argument(
-        "--human", action="store_true", help="Print human-readable JSON"
-    )
+    parser.add_argument("--human", action="store_true", help="Print human-readable JSON")
 
     parsed = parser.parse_args(args)
 

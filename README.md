@@ -22,10 +22,10 @@ In this specification, each feature will generally describe a single test vector
 
 # Glossary
 
-* **Test Vector** : Information about a single test case. Used to either process existing data
+-   **Test Vector** : Information about a single test case. Used to either process existing data
     or create new data.
-* **Test Vector Manifest** : A document that describes one or more test vectors.
-* **Feature** : A self-contained set of behavior that is defined as part of a specification.
+-   **Test Vector Manifest** : A document that describes one or more test vectors.
+-   **Feature** : A self-contained set of behavior that is defined as part of a specification.
     For this specification, these will usually be definitions of test vector manifests.
-* **Specification** : A collection of one or more features that in summary define a standard
+-   **Specification** : A collection of one or more features that in summary define a standard
     set of behaviors and/or data formats.

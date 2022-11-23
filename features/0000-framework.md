@@ -1,10 +1,9 @@
-
-|           |                      |
-|:----------|:---------------------|
-|__Feature__|Test Vector Framework |
-|__Version__|1                     |
-|__Created__|2018-06-21            |
-|__Updated__|2018-08-14            |
+|             |                       |
+| :---------- | :-------------------- |
+| **Feature** | Test Vector Framework |
+| **Version** | 1                     |
+| **Created** | 2018-06-21            |
+| **Updated** | 2018-08-14            |
 
 ## Summary
 
@@ -14,10 +13,10 @@ vectors and associated manifests that describe those test vectors.
 These test vectors are intended to be used to validate interoperability across implementations
 of clients, primarily targeting those clients owned by AWS Crypto Tools.
 
-They will be composed of JSON manifest files that define one or more test cases, including sufficient 
-information for a compatible client to process each test case. These manifest files can also 
-identify additional resources needed for a given test case. These resources will be identified 
-with a URI. If identifying a local file, the URI will be a relative path from the manifest file's 
+They will be composed of JSON manifest files that define one or more test cases, including sufficient
+information for a compatible client to process each test case. These manifest files can also
+identify additional resources needed for a given test case. These resources will be identified
+with a URI. If identifying a local file, the URI will be a relative path from the manifest file's
 parent directory to the target file.
 
 Some types of test manifests will define specific test vectors or instructions for generating
@@ -30,9 +29,9 @@ test vector handlers to identify the manifest type.
 
 ## Glossary
 
-* **Test Vector** : Information about a single test case. Used to either process existing data
+-   **Test Vector** : Information about a single test case. Used to either process existing data
     or create new data.
-* **Test Vector Manifest** : A document that describes one or more test vectors.
+-   **Test Vector Manifest** : A document that describes one or more test vectors.
 
 ## Out of Scope
 

@@ -11,23 +11,24 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 #
-# Only Python 3.6+ compatibility is guaranteed.
+# Only Python 3.7+ compatibility is guaranteed.
 
 import argparse
-import uuid
 import json
 import os
 import sys
+import uuid
 from urllib.parse import urlunparse
+
 from awses_message_encryption_utils import (
+    ALGORITHM_SUITES,
+    ENCRYPTION_CONTEXTS,
+    FRAME_SIZES,
     PLAINTEXTS,
     RAW_RSA_PADDING_ALGORITHMS,
-    ALGORITHM_SUITES,
-    FRAME_SIZES,
-    ENCRYPTION_CONTEXTS,
     UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
     _providers,
-    _raw_aes_providers
+    _raw_aes_providers,
 )
 
 MANIFEST_VERSION = 2
@@ -37,6 +38,7 @@ TAMPERINGS = (
     "mutate",
     "half-sign",
 )
+
 
 def _build_tests(keys):
     """Build all tests to define in manifest, building from current rules and provided keys manifest.
@@ -87,7 +89,7 @@ def _build_tests(keys):
                 "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
                 "master-keys": next(_raw_aes_providers(keys)),
             },
-            "decryption-method": "streaming-unsigned-only"
+            "decryption-method": "streaming-unsigned-only",
         },
     )
 
@@ -103,11 +105,9 @@ def _build_tests(keys):
             },
             "decryption-method": "streaming-unsigned-only",
             "result": {
-                "error": {
-                    "error-description": "Signed message input to streaming unsigned-only decryption method"
-                }
-            }
-        }
+                "error": {"error-description": "Signed message input to streaming unsigned-only decryption method"}
+            },
+        },
     )
 
     for tampering in TAMPERINGS:
@@ -121,8 +121,8 @@ def _build_tests(keys):
                     "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
                     "master-keys": next(_raw_aes_providers(keys)),
                 },
-                "tampering": tampering
-            }
+                "tampering": tampering,
+            },
         )
 
     yield (
@@ -135,17 +135,8 @@ def _build_tests(keys):
                 "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
                 "master-keys": next(_raw_aes_providers(keys)),
             },
-            "tampering": {
-                "change-edk-provider-info": [
-                    "arn:aws:kms:us-west-2:658956600833:alias/EncryptOnly"
-                ]
-            },
-            "decryption-master-keys": [
-                {
-                    "type": "aws-kms",
-                    "key": "us-west-2-encrypt-only"
-                }
-            ]
+            "tampering": {"change-edk-provider-info": ["arn:aws:kms:us-west-2:658956600833:alias/EncryptOnly"]},
+            "decryption-master-keys": [{"type": "aws-kms", "key": "us-west-2-encrypt-only"}],
         },
     )
 
@@ -171,12 +162,8 @@ def build_manifest(keys_filename):
 
 def main(args=None):
     """Entry point for CLI"""
-    parser = argparse.ArgumentParser(
-        description="Build an AWS Encryption SDK decrypt message generation manifest."
-    )
-    parser.add_argument(
-        "--human", action="store_true", help="Print human-readable JSON"
-    )
+    parser = argparse.ArgumentParser(description="Build an AWS Encryption SDK decrypt message generation manifest.")
+    parser.add_argument("--human", action="store_true", help="Print human-readable JSON")
     parser.add_argument("--keys", required=True, help="Keys manifest to use")
 
     parsed = parser.parse_args(args)
