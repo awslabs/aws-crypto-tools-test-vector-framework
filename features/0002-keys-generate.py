@@ -17,6 +17,9 @@ import base64
 import json
 import sys
 
+AWS_REGION = "us-west-2"
+AWS_ACCOUNT_ID = "658956600833"
+
 VERSION = 3
 AES_KEYS = (
     (128, b"\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x10\x11\x12\x13\x14\x15"),
@@ -33,6 +36,110 @@ AES_KEYS = (
     ),
 )
 RSA_KEYS = (
+    (
+        2048,
+        "public",
+        """-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhJZkPbc7sDp/zO7m2/FS
+SyIDpDh2lN1iubwgxOmZl+Zb7tGLVmezJo2NZFZKhXsLRYLyz2h/5m6kriyIiKVr
+lPBbNDwVfvSq7TgD/oANE2NzxgCF+IdA9GSlSHEiUg7uRWbSJWpnKwem8eOF+fkA
+celBlecnEmRNvsfYLzQbd63ce+fajJLKZ1qyYyDt6jJZo+Auzb56lRX2Qv7IKbN4
+rQtfl5BUyCIt0O9RCOnQFZMGq/rSBlbZVldjKt1Mw/FjsZIlVetBGR1fZDhcDvYF
+z3i7pLe2A3H3Ezy6XZraF34PrMbJhwE/EgUhqeXgC/BYmpJ5FNuLW5qaMUqNc3Aa
+9QIDAQAB
+-----END PUBLIC KEY-----""",
+    ),
+    (
+        2048,
+        "private",
+        """-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCElmQ9tzuwOn/M
+7ubb8VJLIgOkOHaU3WK5vCDE6ZmX5lvu0YtWZ7MmjY1kVkqFewtFgvLPaH/mbqSu
+LIiIpWuU8Fs0PBV+9KrtOAP+gA0TY3PGAIX4h0D0ZKVIcSJSDu5FZtIlamcrB6bx
+44X5+QBx6UGV5ycSZE2+x9gvNBt3rdx759qMkspnWrJjIO3qMlmj4C7NvnqVFfZC
+/sgps3itC1+XkFTIIi3Q71EI6dAVkwar+tIGVtlWV2Mq3UzD8WOxkiVV60EZHV9k
+OFwO9gXPeLukt7YDcfcTPLpdmtoXfg+sxsmHAT8SBSGp5eAL8FiaknkU24tbmpox
+So1zcBr1AgMBAAECggEBAIBdgmtl7TnvSTBF0+j5OO1Y3yGtMNFrjVu5UhiS+Yth
+EXykDzz2ZTJcNZoBGWEmAYGpCB/aUonscS/YGdACJ6gpFIP77+vcQWgtpWBO5Vny
+HXKDqzE08aQrlQIP1mSP5Av5QlfLLlswq2bhGyMq+k1OwZq6Es/xoHumzBzXXAh/
+OHw64NukBP52vu7xwrjHj/0KRyJdWh0LojT2ai3xy2eEtzYa5Czoa9F+2hO9kzav
+w9xp//eevSkArKb7ZkzSOZrO2liDeSI5F+7lQ/glPjCwnNg59oF+Iz9V9eWHVgOx
+1xhq+LaHo9Dq+iT9W7kqDJkWV81wRt7ErDnp6vmo/TkCgYEA1jftYvawslQ+Xg65
+SJFRAl2POODkLPsYEXoenIHsbq8GvrgTeGVVAqEMAHdLqgMMn0EkPphPiOCyT3Jt
+9aZUbaZqFQ4MKem0ZOZ29SyFqgSPX5uXhkEubibMI88qloABRIrpbv+aGCVZ2q4g
+s7bnGku+AiX5cfud3zxB1BdaxnMCgYEAnnKSx5tqS0GuDmC3RHj2esDOzzjW/iYu
+eWMot6g2ndNQirgmNguV5hkAJfGzbHnyJMerIxcDkzXRJSbQt0sXAAufZ5HFcIWr
+o4MFGae6wa89EJFXUkouaATYPfDfGz2o/HFpeSdy7IALXN4gHKCKuZ58mhmokk5X
+ZsqhC6cQVvcCgYBWJ8wrvze1oTgsMBPI4dkI8IQHxjs+9AXsEYd6Pq7OnUpDLll2
+VJrqIcdn8JLX374V1ucy3aMvU9+jIEylPa47I3EK4sl1me7Zne8+EBf6FzdqpnM8
+pb58wtHbnRhtyzG3VX8pC1f4Wh1XXCz+2pL7+naC+q7mbuJBxERdfr8djQKBgERq
+YGqD9u+r2oYmyLtuJ691VVcwydRPlD2hzVEP9xVKyzo6rXUkp4MFRIUdykWKmj27
+YW/zXf3QfRA3pGOgrru8SQYlcUVW0nf1+NvNCtza19kxiKzljwgnH2APg6Z1h2QJ
+bGt91ye7WiytVNxHjd78Sf0YGyuhXCfsUoF/j5SdAoGBAJ/x48q8ZacOclWmn44U
+Tf8WLNwIC5eYqhG58Q1KmWY2R+7aq4bBsua72IBBjfEi6CKBgqNg1BZjyNVOu1if
+YIErS0VT9tMptkHOcyXEjREuADCCveAAc96WeINmj//e1yGfnmYKjzuO2DNEXEZ7
+dGvJibTIKmtjMlOjLwztqgLN
+-----END PRIVATE KEY-----""",
+    ),
+    (
+        3072,
+        "private",
+        """-----BEGIN PRIVATE KEY-----
+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
+iNT5B78WWDQPqJsjOtAPOA1k
+----END PRIVATE KEY-----""",
+    ),
+    (
+        3072,
+        "public",
+        """-----BEGIN PUBLIC KEY-----
+MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAtxmP6r0zMx8CoWAnbARx
+0IY6mZKeH9YRW5DQz82W8fF95LTOrqQuF8wKE/Qi6LuP7XZIoESiRPZyrRCpxTzG
+7F3a8ND8GeVuO0uocc9UANq0LUR0A7pj+rXByn/xfRZtc7ZDV7FebSSeHIA+r8z/
+MkjHAoNx8Bk98sRMWAKbAQy48gQ2jMu7IkQEuoGicev5kqCyQWqChPTns+Y8qN5D
+8OI1JKoSlCdx1oDVBLhztQE8X0bFWJffkVE2t9574Q/y47q52gOLs31u4veJ8Bjv
+h3zqM735x7EByt7TS+64s8XjrcdsGhiHVC9l9bY1AbMeKoA9mKOxkyo7PD13esFq
+Ce/HlYPB8Qciz8OO/EuuO5I8CKwcvGiLfvyJCI7iL7jPAohMK4n41SN/0lQ1tKv/
+oKSuu/DFTESXRizcNVvev377A8xmyyCpBxmoWtaKaCuGQCV4xCdCoMzMVvwhyDom
+2qBz4YH3/MwY9Undd2gYgovSiASTicPXl/LI2G4N1hf3AgMBAAE=
+-----END PUBLIC KEY-----"""
+    ),
     (
         4096,
         "private",
@@ -111,13 +218,13 @@ tG7Yv2aGZXGbUtM8o1cZarECAwEAAQ==
 
 AWS_KMS_KEYS = (
     (
-        "us-west-2-decryptable",
-        "arn:aws:kms:us-west-2:658956600833:alias/EncryptDecrypt",
+        AWS_REGION + "-decryptable",
+        "arn:aws:kms:" + AWS_REGION + ":" + AWS_ACCOUNT_ID + ":alias/EncryptDecrypt",
         True,
     ),
     (
-        "us-west-2-encrypt-only",
-        "arn:aws:kms:us-west-2:658956600833:alias/EncryptOnly",
+        AWS_REGION + "-encrypt-only",
+        "arn:aws:kms:" + AWS_REGION + ":" + AWS_ACCOUNT_ID + ":alias/EncryptOnly",
         False,
     ),
 )
