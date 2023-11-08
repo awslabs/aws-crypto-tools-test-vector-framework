@@ -168,7 +168,8 @@ def main(args=None):
     if parsed.human:
         kwargs["indent"] = 4
 
-    return json.dumps(manifest, **kwargs)
+    print(json.dumps(manifest, **kwargs), file=sys.stdout)
+    return 0
 
 
 if __name__ == "__main__":

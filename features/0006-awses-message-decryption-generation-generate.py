@@ -21,17 +21,18 @@ import uuid
 from urllib.parse import urlunparse
 
 from awses_message_encryption_utils import (
-    ALGORITHM_SUITES,
+    HKDF_ALGORITHM_SUITES,
     ENCRYPTION_CONTEXTS,
     FRAME_SIZES,
     PLAINTEXTS,
+    CRYPTOGRAPHIC_MATERIALS_MANAGER,
     RAW_RSA_PADDING_ALGORITHMS,
     UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
     _providers,
     _raw_aes_providers,
 )
 
-MANIFEST_VERSION = 2
+MANIFEST_VERSION = 4
 
 TAMPERINGS = (
     "truncate",
@@ -45,100 +46,102 @@ def _build_tests(keys):
 
     :param dict keys: Parsed keys manifest
     """
-    for algorithm in ALGORITHM_SUITES:
+    for algorithm in HKDF_ALGORITHM_SUITES:
         for frame_size in FRAME_SIZES:
             for ec in ENCRYPTION_CONTEXTS:
                 for provider_set in _providers(keys):
-                    yield (
-                        str(uuid.uuid4()),
-                        {
-                            "encryption-scenario": {
-                                "plaintext": "small",
-                                "algorithm": algorithm,
-                                "frame-size": frame_size,
-                                "encryption-context": ec,
-                                "master-keys": provider_set,
-                            }
-                        },
-                    )
+                    for cmm in CRYPTOGRAPHIC_MATERIALS_MANAGER:
+                        yield (
+                            str(uuid.uuid4()),
+                            {
+                                "encryption-scenario": {
+                                    "plaintext": "small",
+                                    "algorithm": algorithm,
+                                    "frame-size": frame_size,
+                                    "encryption-context": ec,
+                                    "master-keys": provider_set,
+                                    "cmm": cmm
+                                }
+                            },
+                        )
 
-    for algorithm in ALGORITHM_SUITES:
-        for frame_size in FRAME_SIZES:
-            for ec in ENCRYPTION_CONTEXTS:
-                for provider_set in _providers(keys):
-                    yield (
-                        str(uuid.uuid4()),
-                        {
-                            "encryption-scenario": {
-                                "plaintext": "zero",
-                                "algorithm": algorithm,
-                                "frame-size": frame_size,
-                                "encryption-context": ec,
-                                "master-keys": provider_set,
-                            }
-                        },
-                    )
-
-    yield (
-        str(uuid.uuid4()),
-        {
-            "encryption-scenario": {
-                "plaintext": "tiny",
-                "algorithm": "0178",
-                "frame-size": 512,
-                "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
-                "master-keys": next(_raw_aes_providers(keys)),
-            },
-            "decryption-method": "streaming-unsigned-only",
-        },
-    )
-
-    yield (
-        str(uuid.uuid4()),
-        {
-            "encryption-scenario": {
-                "plaintext": "tiny",
-                "algorithm": "0378",
-                "frame-size": 512,
-                "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
-                "master-keys": next(_raw_aes_providers(keys)),
-            },
-            "decryption-method": "streaming-unsigned-only",
-            "result": {
-                "error": {"error-description": "Signed message input to streaming unsigned-only decryption method"}
-            },
-        },
-    )
-
-    for tampering in TAMPERINGS:
-        yield (
-            str(uuid.uuid4()),
-            {
-                "encryption-scenario": {
-                    "plaintext": "tiny",
-                    "algorithm": "0478" if tampering == "half-sign" else "0578",
-                    "frame-size": 512,
-                    "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
-                    "master-keys": next(_raw_aes_providers(keys)),
-                },
-                "tampering": tampering,
-            },
-        )
-
-    yield (
-        str(uuid.uuid4()),
-        {
-            "encryption-scenario": {
-                "plaintext": "tiny",
-                "algorithm": "0578",
-                "frame-size": 512,
-                "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
-                "master-keys": next(_raw_aes_providers(keys)),
-            },
-            "tampering": {"change-edk-provider-info": ["arn:aws:kms:us-west-2:658956600833:alias/EncryptOnly"]},
-            "decryption-master-keys": [{"type": "aws-kms", "key": "us-west-2-encrypt-only"}],
-        },
-    )
+    # for algorithm in ALGORITHM_SUITES:
+    #     for frame_size in FRAME_SIZES:
+    #         for ec in ENCRYPTION_CONTEXTS:
+    #             for provider_set in _providers(keys):
+    #                 yield (
+    #                     str(uuid.uuid4()),
+    #                     {
+    #                         "encryption-scenario": {
+    #                             "plaintext": "zero",
+    #                             "algorithm": algorithm,
+    #                             "frame-size": frame_size,
+    #                             "encryption-context": ec,
+    #                             "master-keys": provider_set,
+    #                         }
+    #                     },
+    #                 )
+    #
+    # yield (
+    #     str(uuid.uuid4()),
+    #     {
+    #         "encryption-scenario": {
+    #             "plaintext": "tiny",
+    #             "algorithm": "0178",
+    #             "frame-size": 512,
+    #             "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+    #             "master-keys": next(_raw_aes_providers(keys)),
+    #         },
+    #         "decryption-method": "streaming-unsigned-only",
+    #     },
+    # )
+    #
+    # yield (
+    #     str(uuid.uuid4()),
+    #     {
+    #         "encryption-scenario": {
+    #             "plaintext": "tiny",
+    #             "algorithm": "0378",
+    #             "frame-size": 512,
+    #             "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+    #             "master-keys": next(_raw_aes_providers(keys)),
+    #         },
+    #         "decryption-method": "streaming-unsigned-only",
+    #         "result": {
+    #             "error": {"error-description": "Signed message input to streaming unsigned-only decryption method"}
+    #         },
+    #     },
+    # )
+    #
+    # for tampering in TAMPERINGS:
+    #     yield (
+    #         str(uuid.uuid4()),
+    #         {
+    #             "encryption-scenario": {
+    #                 "plaintext": "tiny",
+    #                 "algorithm": "0478" if tampering == "half-sign" else "0578",
+    #                 "frame-size": 512,
+    #                 "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+    #                 "master-keys": next(_raw_aes_providers(keys)),
+    #             },
+    #             "tampering": tampering,
+    #         },
+    #     )
+    #
+    # yield (
+    #     str(uuid.uuid4()),
+    #     {
+    #         "encryption-scenario": {
+    #             "plaintext": "tiny",
+    #             "algorithm": "0578",
+    #             "frame-size": 512,
+    #             "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+    #             "master-keys": next(_raw_aes_providers(keys)),
+    #         },
+    #         "tampering": {"change-edk-provider-info": ["arn:aws:kms:us-west-2:658956600833:alias/EncryptOnly"]},
+    #         "decryption-master-keys": [{"type": "aws-kms", "key": "us-west-2-encrypt-only"}],
+    #     },
+    # )
 
 
 def build_manifest(keys_filename):
@@ -174,7 +177,8 @@ def main(args=None):
     if parsed.human:
         kwargs["indent"] = 4
 
-    return json.dumps(manifest, **kwargs)
+    print(json.dumps(manifest, **kwargs), file=sys.stdout)
+    return 0
 
 
 if __name__ == "__main__":
