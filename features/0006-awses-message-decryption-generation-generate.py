@@ -21,7 +21,7 @@ import uuid
 from urllib.parse import urlunparse
 
 from awses_message_encryption_utils import (
-    HKDF_ALGORITHM_SUITES,
+    ALGORITHM_SUITES,
     ENCRYPTION_CONTEXTS,
     FRAME_SIZES,
     PLAINTEXTS,
@@ -46,7 +46,7 @@ def _build_tests(keys):
 
     :param dict keys: Parsed keys manifest
     """
-    for algorithm in HKDF_ALGORITHM_SUITES:
+    for algorithm in ALGORITHM_SUITES:
         for frame_size in FRAME_SIZES:
             for ec in ENCRYPTION_CONTEXTS:
                 for provider_set in _providers(keys):

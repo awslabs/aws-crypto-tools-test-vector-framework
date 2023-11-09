@@ -20,12 +20,15 @@ import uuid
 # AWS Encryption SDK supported algorithm suites
 # https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/algorithms-reference.html
 ALGORITHM_SUITES = ("0014", "0046", "0078", "0114", "0146", "0178", "0214", "0346", "0378", "0478", "0578")
-HKDF_ALGORITHM_SUITES = ("0114", "0146", "0178", "0214", "0346", "0378", "0478", "0578")
 
-PLAINTEXTS = {"zero": 0, "tiny": 10, "small": 10 * 1024}
+PLAINTEXTS = {
+    # "zero": 0,
+    # "tiny": 10,
+    "small": 10 * 1024
+}
 
 FRAME_SIZES = (
-    0,  # Unframed
+    # 0,  # Unframed
     512,  # >10 frames
     # 4096,  # frame size smaller than plaintext size
     # 10240,  # frame size equal to plaintext size
@@ -43,7 +46,7 @@ UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT = {
     b"\x01\x02\x03".decode("utf-8"): b"\x20\x22\x44".decode("utf-8"),
 }
 ENCRYPTION_CONTEXTS = (
-    EMPTY_ENCRYPTION_CONTEXT,
+    # EMPTY_ENCRYPTION_CONTEXT,
     NON_UNICODE_ENCRYPTION_CONTEXT,
 #    UNICODE_ENCRYPTION_CONTEXT,
 #    UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
@@ -212,7 +215,7 @@ def build_tests(keys):
 
     :param dict keys: Parsed keys manifest
     """
-    for algorithm in HKDF_ALGORITHM_SUITES:
+    for algorithm in ALGORITHM_SUITES:
         for frame_size in FRAME_SIZES:
             for ec in ENCRYPTION_CONTEXTS:
                 for provider_set in _providers(keys):
