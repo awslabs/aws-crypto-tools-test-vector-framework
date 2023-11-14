@@ -15,6 +15,7 @@
 
 import functools
 import itertools
+import sys
 import uuid
 
 # AWS Encryption SDK supported algorithm suites
@@ -46,14 +47,16 @@ UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT = {
     b"\x01\x02\x03".decode("utf-8"): b"\x20\x22\x44".decode("utf-8"),
 }
 ENCRYPTION_CONTEXTS = (
-    # EMPTY_ENCRYPTION_CONTEXT,
+    EMPTY_ENCRYPTION_CONTEXT,
     NON_UNICODE_ENCRYPTION_CONTEXT,
-#    UNICODE_ENCRYPTION_CONTEXT,
-#    UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+    #    UNICODE_ENCRYPTION_CONTEXT,
+    #    UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
 )
 
 # Cryptographic Materials Manager
-CRYPTOGRAPHIC_MATERIALS_MANAGER = ("Default", "RequiredEncryptionContext")
+DEFAULT_CMM = "Default"
+REQUIRED_CMM = "RequiredEncryptionContext"
+CRYPTOGRAPHIC_MATERIALS_MANAGER = [REQUIRED_CMM]
 
 # Padding algorithms to test with each RSA Raw Master Key
 RAW_RSA_PADDING_ALGORITHMS = (
@@ -215,11 +218,14 @@ def build_tests(keys):
 
     :param dict keys: Parsed keys manifest
     """
-    for algorithm in ALGORITHM_SUITES:
-        for frame_size in FRAME_SIZES:
-            for ec in ENCRYPTION_CONTEXTS:
-                for provider_set in _providers(keys):
-                    for cmm in CRYPTOGRAPHIC_MATERIALS_MANAGER:
+    # RequiredEncryptionContextCMM requires EC,
+    # so remove Empty EC
+    filtered_ec = filter(lambda _ec: EMPTY_ENCRYPTION_CONTEXT != _ec, ENCRYPTION_CONTEXTS)
+    for cmm in CRYPTOGRAPHIC_MATERIALS_MANAGER:
+        for ec in filtered_ec:
+            for algorithm in ALGORITHM_SUITES:
+                for frame_size in FRAME_SIZES:
+                    for provider_set in _providers(keys):
                         yield (
                             str(uuid.uuid4()),
                             {
@@ -231,3 +237,21 @@ def build_tests(keys):
                                 "cmm": cmm
                             },
                         )
+    print(f'Debug: Default? {"Default" in CRYPTOGRAPHIC_MATERIALS_MANAGER} and '
+          f'Empty? {EMPTY_ENCRYPTION_CONTEXT in ENCRYPTION_CONTEXTS}',
+          file=sys.stderr)
+    if "Default" in CRYPTOGRAPHIC_MATERIALS_MANAGER and EMPTY_ENCRYPTION_CONTEXT in ENCRYPTION_CONTEXTS:
+        for algorithm in ALGORITHM_SUITES:
+            for frame_size in FRAME_SIZES:
+                for provider_set in _providers(keys):
+                    yield (
+                        str(uuid.uuid4()),
+                        {
+                            "plaintext": "small",
+                            "algorithm": algorithm,
+                            "frame-size": frame_size,
+                            "encryption-context": EMPTY_ENCRYPTION_CONTEXT,
+                            "master-keys": provider_set,
+                            "cmm": "Default"
+                        },
+                    )
