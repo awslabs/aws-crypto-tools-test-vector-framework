@@ -42,6 +42,10 @@ TAMPERINGS = (
 )
 
 
+def _ec_name(ec: dict[str, str]) -> str:
+    return f'ec_len_{len(ec)}'
+
+
 def _build_tests(keys):
     """Build all tests to define in manifest,
     building from current rules and provided keys manifest.
@@ -50,7 +54,7 @@ def _build_tests(keys):
     """
     # RequiredEncryptionContextCMM requires EC,
     # so remove Empty EC and handle it below
-    filtered_ec = filter(lambda _ec: EMPTY_ENCRYPTION_CONTEXT != _ec, ENCRYPTION_CONTEXTS)
+    filtered_ec = list(filter(lambda _ec: EMPTY_ENCRYPTION_CONTEXT != _ec, ENCRYPTION_CONTEXTS))
     print(f'Debug: Not Empty in Filtered? '
           f'{NON_UNICODE_ENCRYPTION_CONTEXT in filtered_ec}',
           file=sys.stderr)
@@ -60,7 +64,7 @@ def _build_tests(keys):
                 for frame_size in FRAME_SIZES:
                     for provider_set in _providers(keys):
                         yield (
-                            f"{algorithm}-{str(uuid.uuid4())}",
+                            f"{algorithm}-{_ec_name(ec)}-{str(uuid.uuid4())}",
                             {
                                 "encryption-scenario": {
                                     "plaintext": "small",
@@ -81,17 +85,18 @@ def _build_tests(keys):
 
 
 def _empty_ec_default_cmm_helper(keys):
+    ec = EMPTY_ENCRYPTION_CONTEXT
     for algorithm in ALGORITHM_SUITES:
         for frame_size in FRAME_SIZES:
             for provider_set in _providers(keys):
                 yield (
-                    f"{algorithm}-{str(uuid.uuid4())}",
+                    f"{algorithm}-{_ec_name(ec)}-{str(uuid.uuid4())}",
                     {
                         "encryption-scenario": {
                             "plaintext": "small",
                             "algorithm": algorithm,
                             "frame-size": frame_size,
-                            "encryption-context": EMPTY_ENCRYPTION_CONTEXT,
+                            "encryption-context": ec,
                             "master-keys": provider_set,
                             "cmm": "Default"
                         }
@@ -110,12 +115,14 @@ def build_manifest(keys_filename):
     keys_path = "/".join(keys_filename.split(os.path.sep))
     keys_uri = urlunparse(("file", keys_path, "", "", "", ""))
     tests = dict(_build_tests(keys))
+    print(f'Debug: Test Size {len(tests)}', file=sys.stderr)
     print(f'Debug: Default? {"Default" in CRYPTOGRAPHIC_MATERIALS_MANAGER} and '
           f'Empty? {EMPTY_ENCRYPTION_CONTEXT in ENCRYPTION_CONTEXTS}',
           file=sys.stderr)
     if "Default" in CRYPTOGRAPHIC_MATERIALS_MANAGER and \
             EMPTY_ENCRYPTION_CONTEXT in ENCRYPTION_CONTEXTS:
         tests.update(_empty_ec_default_cmm_helper(keys))
+    print(f'Debug: Test Size {len(tests)}', file=sys.stderr)
 
     return {
         "manifest": {"type": "awses-decrypt-generate", "version": MANIFEST_VERSION},

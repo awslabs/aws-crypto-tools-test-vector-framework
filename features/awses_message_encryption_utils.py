@@ -56,7 +56,7 @@ ENCRYPTION_CONTEXTS = (
 # Cryptographic Materials Manager
 DEFAULT_CMM = "Default"
 REQUIRED_CMM = "RequiredEncryptionContext"
-CRYPTOGRAPHIC_MATERIALS_MANAGER = [REQUIRED_CMM]
+CRYPTOGRAPHIC_MATERIALS_MANAGER = [DEFAULT_CMM, REQUIRED_CMM]
 
 # Padding algorithms to test with each RSA Raw Master Key
 RAW_RSA_PADDING_ALGORITHMS = (
