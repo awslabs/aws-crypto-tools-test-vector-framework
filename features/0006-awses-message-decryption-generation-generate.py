@@ -30,7 +30,7 @@ from awses_message_encryption_utils import (
     RAW_RSA_PADDING_ALGORITHMS,
     UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
     _providers,
-    _raw_aes_providers, NON_UNICODE_ENCRYPTION_CONTEXT,
+    _raw_aes_providers, NON_UNICODE_ENCRYPTION_CONTEXT, DEFAULT_CMM,
 )
 
 MANIFEST_VERSION = 4
@@ -42,8 +42,8 @@ TAMPERINGS = (
 )
 
 
-def _ec_name(ec: dict[str, str]) -> str:
-    return f'ec_len_{len(ec)}'
+def _test_name(algorithm, ec: dict[str, str], cmm) -> str:
+    return f"{algorithm}-ec_len_{len(ec)}-cmm_{cmm}-{str(uuid.uuid4())}"
 
 
 def _build_tests(keys):
@@ -64,7 +64,7 @@ def _build_tests(keys):
                 for frame_size in FRAME_SIZES:
                     for provider_set in _providers(keys):
                         yield (
-                            f"{algorithm}-{_ec_name(ec)}-{str(uuid.uuid4())}",
+                            _test_name(algorithm, ec, cmm),
                             {
                                 "encryption-scenario": {
                                     "plaintext": "small",
@@ -85,12 +85,13 @@ def _build_tests(keys):
 
 
 def _empty_ec_default_cmm_helper(keys):
+    cmm = DEFAULT_CMM
     ec = EMPTY_ENCRYPTION_CONTEXT
     for algorithm in ALGORITHM_SUITES:
         for frame_size in FRAME_SIZES:
             for provider_set in _providers(keys):
                 yield (
-                    f"{algorithm}-{_ec_name(ec)}-{str(uuid.uuid4())}",
+                    _test_name(algorithm, ec, cmm),
                     {
                         "encryption-scenario": {
                             "plaintext": "small",
@@ -98,7 +99,7 @@ def _empty_ec_default_cmm_helper(keys):
                             "frame-size": frame_size,
                             "encryption-context": ec,
                             "master-keys": provider_set,
-                            "cmm": "Default"
+                            "cmm": cmm
                         }
                     },
                 )
