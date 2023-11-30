@@ -15,25 +15,22 @@
 
 import functools
 import itertools
-import sys
 import uuid
 
 # AWS Encryption SDK supported algorithm suites
 # https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/algorithms-reference.html
 ALGORITHM_SUITES = ("0014", "0046", "0078", "0114", "0146", "0178", "0214", "0346", "0378", "0478", "0578")
+ALGORITHM_SUITES_COMMITTING = ("0478", "0578")
+ALGORITHM_SUITES_NO_KDF = ("0014", "0046", "0078")
 
-PLAINTEXTS = {
-    # "zero": 0,
-    # "tiny": 10,
-    "small": 10 * 1024
-}
+PLAINTEXTS = {"zero": 0, "tiny": 10, "small": 10 * 1024}
 
 FRAME_SIZES = (
-    # 0,  # Unframed
+    0,  # Unframed
     512,  # >10 frames
-    # 4096,  # frame size smaller than plaintext size
-    # 10240,  # frame size equal to plaintext size
-    # 20480,  # frame size larger than plaintext size
+    4096,  # frame size smaller than plaintext size
+    10240,  # frame size equal to plaintext size
+    20480,  # frame size larger than plaintext size
 )
 
 EMPTY_ENCRYPTION_CONTEXT = {}
@@ -49,21 +46,24 @@ UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT = {
 ENCRYPTION_CONTEXTS = (
     EMPTY_ENCRYPTION_CONTEXT,
     NON_UNICODE_ENCRYPTION_CONTEXT,
-    #    UNICODE_ENCRYPTION_CONTEXT,
-    #    UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+    UNICODE_ENCRYPTION_CONTEXT,
+    UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
 )
 
 # Cryptographic Materials Manager
 DEFAULT_CMM = "Default"
 REQUIRED_CMM = "RequiredEncryptionContext"
-CRYPTOGRAPHIC_MATERIALS_MANAGER = [DEFAULT_CMM, REQUIRED_CMM]
+CRYPTOGRAPHIC_MATERIALS_MANAGER = [
+    DEFAULT_CMM,
+    REQUIRED_CMM
+]
 
 # Padding algorithms to test with each RSA Raw Master Key
 RAW_RSA_PADDING_ALGORITHMS = (
-    # {"padding-algorithm": "pkcs1"},
-    # {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha1"},
-    # {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha256"},
-    # {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha384"},
+    {"padding-algorithm": "pkcs1"},
+    {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha1"},
+    {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha256"},
+    {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha384"},
     {"padding-algorithm": "oaep-mgf1", "padding-hash": "sha512"},
 )
 # Padding algorithm to use with any RSA Raw Master Keys that cannot decrypt
@@ -218,31 +218,9 @@ def build_tests(keys):
 
     :param dict keys: Parsed keys manifest
     """
-    # RequiredEncryptionContextCMM requires EC,
-    # so remove Empty EC
-    filtered_ec = filter(lambda _ec: EMPTY_ENCRYPTION_CONTEXT != _ec, ENCRYPTION_CONTEXTS)
-    for cmm in CRYPTOGRAPHIC_MATERIALS_MANAGER:
-        for ec in filtered_ec:
-            for algorithm in ALGORITHM_SUITES:
-                for frame_size in FRAME_SIZES:
-                    for provider_set in _providers(keys):
-                        yield (
-                            str(uuid.uuid4()),
-                            {
-                                "plaintext": "small",
-                                "algorithm": algorithm,
-                                "frame-size": frame_size,
-                                "encryption-context": ec,
-                                "master-keys": provider_set,
-                                "cmm": cmm
-                            },
-                        )
-    print(f'Debug: Default? {"Default" in CRYPTOGRAPHIC_MATERIALS_MANAGER} and '
-          f'Empty? {EMPTY_ENCRYPTION_CONTEXT in ENCRYPTION_CONTEXTS}',
-          file=sys.stderr)
-    if "Default" in CRYPTOGRAPHIC_MATERIALS_MANAGER and EMPTY_ENCRYPTION_CONTEXT in ENCRYPTION_CONTEXTS:
-        for algorithm in ALGORITHM_SUITES:
-            for frame_size in FRAME_SIZES:
+    for algorithm in ALGORITHM_SUITES:
+        for frame_size in FRAME_SIZES:
+            for ec in ENCRYPTION_CONTEXTS:
                 for provider_set in _providers(keys):
                     yield (
                         str(uuid.uuid4()),
@@ -250,7 +228,7 @@ def build_tests(keys):
                             "plaintext": "small",
                             "algorithm": algorithm,
                             "frame-size": frame_size,
-                            "encryption-context": EMPTY_ENCRYPTION_CONTEXT,
+                            "encryption-context": ec,
                             "master-keys": provider_set,
                             "cmm": "Default"
                         },

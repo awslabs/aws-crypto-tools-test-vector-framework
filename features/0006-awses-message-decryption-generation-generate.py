@@ -23,17 +23,15 @@ from urllib.parse import urlunparse
 from awses_message_encryption_utils import (
     ALGORITHM_SUITES,
     ENCRYPTION_CONTEXTS,
-    EMPTY_ENCRYPTION_CONTEXT,
     FRAME_SIZES,
     PLAINTEXTS,
-    CRYPTOGRAPHIC_MATERIALS_MANAGER,
     RAW_RSA_PADDING_ALGORITHMS,
     UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
     _providers,
-    _raw_aes_providers, NON_UNICODE_ENCRYPTION_CONTEXT, DEFAULT_CMM,
+    _raw_aes_providers,
 )
 
-MANIFEST_VERSION = 4
+MANIFEST_VERSION = 2
 
 TAMPERINGS = (
     "truncate",
@@ -42,67 +40,105 @@ TAMPERINGS = (
 )
 
 
-def _test_name(algorithm, ec: dict[str, str], cmm) -> str:
-    return f"{algorithm}-ec_len_{len(ec)}-cmm_{cmm}-{str(uuid.uuid4())}"
-
-
 def _build_tests(keys):
-    """Build all tests to define in manifest,
-    building from current rules and provided keys manifest.
+    """Build all tests to define in manifest, building from current rules and provided keys manifest.
 
     :param dict keys: Parsed keys manifest
     """
-    # RequiredEncryptionContextCMM requires EC,
-    # so remove Empty EC and handle it below
-    filtered_ec = list(filter(lambda _ec: EMPTY_ENCRYPTION_CONTEXT != _ec, ENCRYPTION_CONTEXTS))
-    print(f'Debug: Not Empty in Filtered? '
-          f'{NON_UNICODE_ENCRYPTION_CONTEXT in filtered_ec}',
-          file=sys.stderr)
-    for cmm in CRYPTOGRAPHIC_MATERIALS_MANAGER:
-        for ec in filtered_ec:
-            for algorithm in ALGORITHM_SUITES:
-                for frame_size in FRAME_SIZES:
-                    for provider_set in _providers(keys):
-                        yield (
-                            _test_name(algorithm, ec, cmm),
-                            {
-                                "encryption-scenario": {
-                                    "plaintext": "small",
-                                    "algorithm": algorithm,
-                                    "frame-size": frame_size,
-                                    "encryption-context": ec,
-                                    "master-keys": provider_set,
-                                    "cmm": cmm
-                                }
-                            },
-                        )
-    # print(f'Debug: Default? {"Default" in CRYPTOGRAPHIC_MATERIALS_MANAGER} and '
-    #       f'Empty? {EMPTY_ENCRYPTION_CONTEXT in ENCRYPTION_CONTEXTS}',
-    #       file=sys.stderr)
-    # print(f'Debug: Required? {"RequiredEncryptionContext" in CRYPTOGRAPHIC_MATERIALS_MANAGER} and '
-    #       f'Not Empty? {NON_UNICODE_ENCRYPTION_CONTEXT in ENCRYPTION_CONTEXTS}',
-    #       file=sys.stderr)
-
-
-def _empty_ec_default_cmm_helper(keys):
-    cmm = DEFAULT_CMM
-    ec = EMPTY_ENCRYPTION_CONTEXT
     for algorithm in ALGORITHM_SUITES:
         for frame_size in FRAME_SIZES:
-            for provider_set in _providers(keys):
-                yield (
-                    _test_name(algorithm, ec, cmm),
-                    {
-                        "encryption-scenario": {
-                            "plaintext": "small",
-                            "algorithm": algorithm,
-                            "frame-size": frame_size,
-                            "encryption-context": ec,
-                            "master-keys": provider_set,
-                            "cmm": cmm
-                        }
-                    },
-                )
+            for ec in ENCRYPTION_CONTEXTS:
+                for provider_set in _providers(keys):
+                    yield (
+                        str(uuid.uuid4()),
+                        {
+                            "encryption-scenario": {
+                                "plaintext": "small",
+                                "algorithm": algorithm,
+                                "frame-size": frame_size,
+                                "encryption-context": ec,
+                                "master-keys": provider_set,
+                            }
+                        },
+                    )
+
+    for algorithm in ALGORITHM_SUITES:
+        for frame_size in FRAME_SIZES:
+            for ec in ENCRYPTION_CONTEXTS:
+                for provider_set in _providers(keys):
+                    yield (
+                        str(uuid.uuid4()),
+                        {
+                            "encryption-scenario": {
+                                "plaintext": "zero",
+                                "algorithm": algorithm,
+                                "frame-size": frame_size,
+                                "encryption-context": ec,
+                                "master-keys": provider_set,
+                            }
+                        },
+                    )
+
+    yield (
+        str(uuid.uuid4()),
+        {
+            "encryption-scenario": {
+                "plaintext": "tiny",
+                "algorithm": "0178",
+                "frame-size": 512,
+                "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+                "master-keys": next(_raw_aes_providers(keys)),
+            },
+            "decryption-method": "streaming-unsigned-only",
+        },
+    )
+
+    yield (
+        str(uuid.uuid4()),
+        {
+            "encryption-scenario": {
+                "plaintext": "tiny",
+                "algorithm": "0378",
+                "frame-size": 512,
+                "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+                "master-keys": next(_raw_aes_providers(keys)),
+            },
+            "decryption-method": "streaming-unsigned-only",
+            "result": {
+                "error": {"error-description": "Signed message input to streaming unsigned-only decryption method"}
+            },
+        },
+    )
+
+    for tampering in TAMPERINGS:
+        yield (
+            str(uuid.uuid4()),
+            {
+                "encryption-scenario": {
+                    "plaintext": "tiny",
+                    "algorithm": "0478" if tampering == "half-sign" else "0578",
+                    "frame-size": 512,
+                    "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+                    "master-keys": next(_raw_aes_providers(keys)),
+                },
+                "tampering": tampering,
+            },
+        )
+
+    yield (
+        str(uuid.uuid4()),
+        {
+            "encryption-scenario": {
+                "plaintext": "tiny",
+                "algorithm": "0578",
+                "frame-size": 512,
+                "encryption-context": UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
+                "master-keys": next(_raw_aes_providers(keys)),
+            },
+            "tampering": {"change-edk-provider-info": ["arn:aws:kms:us-west-2:658956600833:alias/EncryptOnly"]},
+            "decryption-master-keys": [{"type": "aws-kms", "key": "us-west-2-encrypt-only"}],
+        },
+    )
 
 
 def build_manifest(keys_filename):
@@ -115,21 +151,12 @@ def build_manifest(keys_filename):
 
     keys_path = "/".join(keys_filename.split(os.path.sep))
     keys_uri = urlunparse(("file", keys_path, "", "", "", ""))
-    tests = dict(_build_tests(keys))
-    print(f'Debug: Test Size {len(tests)}', file=sys.stderr)
-    print(f'Debug: Default? {"Default" in CRYPTOGRAPHIC_MATERIALS_MANAGER} and '
-          f'Empty? {EMPTY_ENCRYPTION_CONTEXT in ENCRYPTION_CONTEXTS}',
-          file=sys.stderr)
-    if "Default" in CRYPTOGRAPHIC_MATERIALS_MANAGER and \
-            EMPTY_ENCRYPTION_CONTEXT in ENCRYPTION_CONTEXTS:
-        tests.update(_empty_ec_default_cmm_helper(keys))
-    print(f'Debug: Test Size {len(tests)}', file=sys.stderr)
 
     return {
         "manifest": {"type": "awses-decrypt-generate", "version": MANIFEST_VERSION},
         "keys": keys_uri,
         "plaintexts": PLAINTEXTS,
-        "tests": tests,
+        "tests": dict(_build_tests(keys)),
     }
 
 
@@ -145,7 +172,7 @@ def main(args=None):
 
     kwargs = {}
     if parsed.human:
-        kwargs["indent"] = 4
+        kwargs["indent"] = 2
 
     print(json.dumps(manifest, **kwargs), file=sys.stdout)
     return 0
