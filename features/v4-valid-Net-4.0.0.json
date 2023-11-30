@@ -1,0 +1,112 @@
+{
+  "manifest": {
+    "type": "awses-decrypt-generate",
+    "version": 4
+  },
+  "keys": "file://net4x-keys.json",
+  "plaintexts": {
+    "small": 10240
+  },
+  "tests": {
+    "0478-ec_len_2-cmm_RequiredEncryptionContext-18eac0d7-ff48-4d06-a751-b3e13a97a555": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0478",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    },
+    "0578-ec_len_2-cmm_RequiredEncryptionContext-472e1518-b89b-4747-9e87-32974414121f": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0578",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    },
+    "0014-ec_len_2-cmm_RequiredEncryptionContext-98c06395-2ff4-4610-9e20-650c1d8d9544": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0014",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    },
+    "0046-ec_len_2-cmm_RequiredEncryptionContext-67a47f68-6373-4c14-8137-e2cd2f58e99f": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0046",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    },
+    "0078-ec_len_2-cmm_RequiredEncryptionContext-fa27ab65-35e6-4b4b-bb48-a0b7a4347996": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0078",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    }
+  }
+}

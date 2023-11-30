@@ -1,0 +1,539 @@
+{
+  "manifest": {
+    "type": "awses-decrypt-generate",
+    "version": 4
+  },
+  "keys": "file://net4x-keys.json",
+  "plaintexts": {
+    "small": 10240
+  },
+  "tests": {
+    "0114-ec_len_2-cmm_RequiredEncryptionContext-9139b84c-6b74-47b1-97c5-e700552cccea": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0114",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    },
+    "0146-ec_len_2-cmm_RequiredEncryptionContext-b5142426-5e82-4fba-912f-54cda395098a": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0146",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    },
+    "0178-ec_len_2-cmm_RequiredEncryptionContext-af54f1a4-a1ca-4c55-9bee-df9f5babff61": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0178",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    },
+    "0214-ec_len_2-cmm_RequiredEncryptionContext-89b46864-7c80-446e-aff2-fe92ad4bde19": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0214",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    },
+    "0346-ec_len_2-cmm_RequiredEncryptionContext-0a15bc71-e2cb-412c-8346-e81e4b726097": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0346",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    },
+    "0378-ec_len_2-cmm_RequiredEncryptionContext-120e5ebb-672f-4125-99f8-db626a42ea26": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0378",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "RequiredEncryptionContext"
+      }
+    },
+    "0014-ec_len_2-cmm_Default-4995aa2c-9270-4f93-865e-1018c96cc4e9": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0014",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0046-ec_len_2-cmm_Default-f4fdd663-f4fe-42dc-b9d2-40886846d600": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0046",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0078-ec_len_2-cmm_Default-bfa08d03-35f1-4429-9431-6929c8d494dc": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0078",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0114-ec_len_2-cmm_Default-5b2003af-d2c4-40a8-bd0e-67c433eb1494": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0114",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0146-ec_len_2-cmm_Default-94f6910b-e5f5-4b05-9025-e9beef343237": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0146",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0178-ec_len_2-cmm_Default-a3c86408-4776-4e42-92cf-34c296edd935": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0178",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0214-ec_len_2-cmm_Default-f5c7a7b6-8ce6-419a-bdda-2166224189b6": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0214",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0346-ec_len_2-cmm_Default-c1efcf9b-a780-428d-a538-8257fbe7203a": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0346",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0378-ec_len_2-cmm_Default-4abfbbe3-a4dc-4d68-9c28-b290b1a01eec": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0378",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0478-ec_len_2-cmm_Default-1e6bfc62-58fa-4a7b-9a7f-bf9ed42e98c2": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0478",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0578-ec_len_2-cmm_Default-b294585c-04dc-43ee-b477-bf2e679b20e3": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0578",
+        "frame-size": 512,
+        "encryption-context": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0014-ec_len_0-cmm_Default-35a627a0-0ecd-4b01-8766-e9d05a595a64": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0014",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0046-ec_len_0-cmm_Default-1d250fd5-813c-40bc-bd66-838579b3460b": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0046",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0078-ec_len_0-cmm_Default-6f47d222-33c7-445a-bc25-8c8ac29b6b2e": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0078",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0114-ec_len_0-cmm_Default-8715e855-9432-4276-b59e-a9379ab28930": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0114",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0146-ec_len_0-cmm_Default-94e1a065-b609-45b0-9b5a-d0240d884481": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0146",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0178-ec_len_0-cmm_Default-1c0a9ca2-fae8-4e25-9575-851380268a5d": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0178",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0214-ec_len_0-cmm_Default-49b06781-e9a2-489b-a7b7-094c88859db6": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0214",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0346-ec_len_0-cmm_Default-101b8ff0-d102-47b4-ad3e-427af2fc74cc": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0346",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0378-ec_len_0-cmm_Default-43bee3c2-0b8f-49ce-bfb0-95d50f6be9e3": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0378",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0478-ec_len_0-cmm_Default-d76a297a-ce09-465f-9921-03640d642049": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0478",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    },
+    "0578-ec_len_0-cmm_Default-25bd5575-93ab-4bd5-aa60-4914f9fcd827": {
+      "encryption-scenario": {
+        "plaintext": "small",
+        "algorithm": "0578",
+        "frame-size": 512,
+        "encryption-context": {},
+        "master-keys": [
+          {
+            "type": "raw",
+            "key": "aes-256",
+            "provider-id": "aws-raw-vectors-persistant",
+            "encryption-algorithm": "aes"
+          }
+        ],
+        "cmm": "Default"
+      }
+    }
+  }
+}

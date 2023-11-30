@@ -20,6 +20,8 @@ import uuid
 # AWS Encryption SDK supported algorithm suites
 # https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/algorithms-reference.html
 ALGORITHM_SUITES = ("0014", "0046", "0078", "0114", "0146", "0178", "0214", "0346", "0378", "0478", "0578")
+ALGORITHM_SUITES_COMMITTING = ("0478", "0578")
+ALGORITHM_SUITES_NO_KDF = ("0014", "0046", "0078")
 
 PLAINTEXTS = {"zero": 0, "tiny": 10, "small": 10 * 1024}
 
@@ -47,6 +49,14 @@ ENCRYPTION_CONTEXTS = (
     UNICODE_ENCRYPTION_CONTEXT,
     UNPRINTABLE_UNICODE_ENCRYPTION_CONTEXT,
 )
+
+# Cryptographic Materials Manager
+DEFAULT_CMM = "Default"
+REQUIRED_CMM = "RequiredEncryptionContext"
+CRYPTOGRAPHIC_MATERIALS_MANAGER = [
+    DEFAULT_CMM,
+    REQUIRED_CMM
+]
 
 # Padding algorithms to test with each RSA Raw Master Key
 RAW_RSA_PADDING_ALGORITHMS = (
@@ -220,5 +230,6 @@ def build_tests(keys):
                             "frame-size": frame_size,
                             "encryption-context": ec,
                             "master-keys": provider_set,
+                            "cmm": "Default"
                         },
                     )

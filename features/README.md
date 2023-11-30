@@ -35,3 +35,18 @@ to have a canonical representation of that manifest.
     of existing full AWS Encryption SDK ciphertext message test vectors to decrypt.
 -   [AWS Encryption SDK Master Key](./0005-awses-master-key.md) : Describes a format for defining master
     keys in AWS Encryption SDK manifests.
+
+# Net V4
+
+To generate the manifest for the ESDK-Net v4.0.0, invoke:
+```
+python3 0007-net-v4-decryption-generation-generate.py \
+  --human --valid \
+  --keys net4x-keys.json 1> v4-valid-Net-4.0.0.json
+```
+and then:
+```
+python3 0007-net-v4-decryption-generation-generate.py \
+  --human \
+  --keys net4x-keys.json 1> v4-invalid-Net-4.0.0.json
+```
